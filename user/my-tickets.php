@@ -17,9 +17,7 @@ $db = $database->getConnection();
 // Get user's reservations
 $sql = "SELECT r.*, p.name as package_name, pc.name as category_name, 
         p.price_weekday, p.price_weekend,
-        (SELECT proof_of_payment FROM payments WHERE reservation_id = r.id ORDER BY created_at DESC LIMIT 1) as payment_proof,
         CASE 
-            WHEN r.status = 'pending' AND (SELECT proof_of_payment FROM payments WHERE reservation_id = r.id AND proof_of_payment IS NOT NULL LIMIT 1) IS NOT NULL THEN 'Menunggu Konfirmasi'
             WHEN r.status = 'pending' THEN 'Menunggu Pembayaran'
             WHEN r.status = 'confirmed' THEN 'Dikonfirmasi'
             WHEN r.status = 'completed' THEN 'Selesai'
@@ -27,7 +25,6 @@ $sql = "SELECT r.*, p.name as package_name, pc.name as category_name,
             ELSE r.status
         END as status_text,
         CASE 
-            WHEN r.status = 'pending' AND (SELECT proof_of_payment FROM payments WHERE reservation_id = r.id AND proof_of_payment IS NOT NULL LIMIT 1) IS NOT NULL THEN 'info'
             WHEN r.status = 'pending' THEN 'warning'
             WHEN r.status = 'confirmed' THEN 'success'
             WHEN r.status = 'completed' THEN 'info'
@@ -51,10 +48,10 @@ $tickets = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <head>
     <meta charset="utf-8" />
-    <title>Tiket Saya - Taman Kopses Ciseeng</title>
+    <title>Tiket Saya - Tirta Sanita Outbound</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="Taman Kopses Ciseeng, Tiket, Reservasi" name="keywords" />
-    <meta content="Daftar tiket reservasi di Taman Kopses Ciseeng" name="description" />
+    <meta content="Tirta Sanita Outbound, Tiket, Reservasi" name="keywords" />
+    <meta content="Daftar tiket reservasi di Tirta Sanita Outbound" name="description" />
 
     <!-- Favicon -->
     <link href="../img/favicon.ico" rel="icon" />
@@ -125,12 +122,6 @@ $tickets = $stmt->fetchAll(PDO::FETCH_ASSOC);
             border-top: 1px dashed #dee2e6;
             padding-top: 1rem;
         }
-        .ticket-qr {
-            border: 1px solid #dee2e6;
-            padding: 5px;
-            background-color: #fff;
-            border-radius: 5px;
-        }
         .badge {
             font-weight: 500;
             padding: 0.5em 0.8em;
@@ -186,7 +177,7 @@ $tickets = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <div class="py-4">
                         <i class="fas fa-ticket-alt fa-5x text-primary mb-4"></i>
                         <h3 class="mb-3">Belum Ada Tiket</h3>
-                        <p class="text-muted mb-4">Anda belum memiliki reservasi atau tiket. Silakan buat reservasi baru untuk menikmati fasilitas di Taman Kopses Ciseeng.</p>
+                        <p class="text-muted mb-4">Anda belum memiliki reservasi atau tiket. Silakan buat reservasi baru untuk menikmati fasilitas di Tirta Sanita Outbound.</p>
                         <a href="reservation.php" class="btn btn-primary py-3 px-5 rounded-pill">
                             <i class="fas fa-plus-circle me-2"></i> Buat Reservasi Sekarang
                         </a>
@@ -280,13 +271,6 @@ $tickets = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="ticket-actions mt-4">
                                         <div class="row align-items-center">
                                             <div class="col-md-6 mb-3 mb-md-0">
-                                                <?php if ($ticket['status'] == 'confirmed'): ?>
-                                                <div class="ticket-qr text-center mb-2">
-                                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=TICKET-<?php echo $ticket['id']; ?>" 
-                                                        alt="QR Code" class="img-fluid" style="max-width: 100px;">
-                                                </div>
-                                                <p class="text-center small text-muted mb-0">Scan untuk validasi</p>
-                                                <?php else: ?>
                                                 <div class="ticket-price">
                                                     <?php 
                                                     $price = $ticket['is_weekday'] ? 
@@ -296,7 +280,6 @@ $tickets = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                     <span>Rp <?php echo $price; ?></span>
                                                     <div class="small text-muted">Total untuk <?php echo $ticket['num_visitors']; ?> pengunjung</div>
                                                 </div>
-                                                <?php endif; ?>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="d-flex flex-column gap-2">

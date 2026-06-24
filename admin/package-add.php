@@ -104,10 +104,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
     <meta charset="utf-8">
-    <title>Tambah Paket - Taman Kopses Ciseeng</title>
+    <title>Tambah Paket - Tirta Sanita Outbound</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Taman Kopses Ciseeng, Admin, Paket" name="keywords">
-    <meta content="Admin panel untuk mengelola paket di Taman Kopses Ciseeng" name="description">
+    <meta content="Tirta Sanita Outbound, Admin, Paket" name="keywords">
+    <meta content="Admin panel untuk mengelola paket di Tirta Sanita Outbound" name="description">
 
     <!-- Favicon -->
     <link href="../img/favicon.ico" rel="icon">
@@ -291,7 +291,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <i class="fas fa-bars"></i>
                 </button>
                 <a class="navbar-brand d-none d-lg-block" href="dashboard.php">
-                    <span>Taman Kopses Ciseeng</span>
+                    <span>Tirta Sanita Outbound</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

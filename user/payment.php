@@ -17,105 +17,36 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
 $reservation_id = $_GET['id'];
 $user_id = $_SESSION['user_id'];
 
-// Get reservation details
+// Verify reservation belongs to user
 $database = new Database();
 $db = $database->getConnection();
 
-$sql = "SELECT r.*, p.name as package_name, p.price_weekday, p.price_weekend, pc.name as category_name 
-        FROM reservations r 
-        JOIN packages p ON r.package_id = p.id 
-        JOIN package_categories pc ON p.category_id = pc.id 
-        WHERE r.id = :id AND r.user_id = :user_id";
-
+$sql = "SELECT r.* FROM reservations r WHERE r.id = :id AND r.user_id = :user_id AND r.status = 'pending'";
 $stmt = $db->prepare($sql);
 $stmt->bindParam(':id', $reservation_id);
 $stmt->bindParam(':user_id', $user_id);
 $stmt->execute();
 
 if ($stmt->rowCount() == 0) {
-    setFlashMessage('message', 'Reservasi tidak ditemukan.', 'alert alert-danger');
+    setFlashMessage('message', 'Reservasi tidak ditemukan atau sudah diproses.', 'alert alert-danger');
     redirect("dashboard.php");
 }
 
-$reservation = $stmt->fetch(PDO::FETCH_ASSOC);
-
-// Get payment methods
-$sql = "SELECT * FROM payment_methods WHERE is_active = 1";
-$stmt = $db->prepare($sql);
-$stmt->execute();
-$payment_methods = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-// Group payment methods by type
-$grouped_methods = [];
-foreach ($payment_methods as $method) {
-    $type = isset($method['type']) ? $method['type'] : 'other';
-    if (!isset($grouped_methods[$type])) {
-        $grouped_methods[$type] = [];
-    }
-    $grouped_methods[$type][] = $method;
-}
-
-// Process payment form submission
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $payment_method_id = $_POST['payment_method_id'];
-    
-    // Check if file is uploaded
-    if (isset($_FILES['proof_of_payment']) && $_FILES['proof_of_payment']['error'] == 0) {
-        $allowed = ['jpg', 'jpeg', 'png', 'pdf'];
-        $filename = $_FILES['proof_of_payment']['name'];
-        $filetype = pathinfo($filename, PATHINFO_EXTENSION);
-        
-        // Verify file extension
-        if (in_array(strtolower($filetype), $allowed)) {
-            // Create unique filename
-            $new_filename = 'payment_' . $reservation_id . '_' . time() . '.' . $filetype;
-            $upload_path = '../uploads/payments/' . $new_filename;
-            
-            // Create directory if it doesn't exist
-            if (!file_exists('../uploads/payments/')) {
-                mkdir('../uploads/payments/', 0777, true);
-            }
-            
-            // Upload file
-            if (move_uploaded_file($_FILES['proof_of_payment']['tmp_name'], $upload_path)) {
-                // Create payment record
-                $sql = "INSERT INTO payments (reservation_id, payment_method_id, amount, proof_of_payment, status) 
-                        VALUES (:reservation_id, :payment_method_id, :amount, :proof_of_payment, 'pending')";
-                
-                $stmt = $db->prepare($sql);
-                $stmt->bindParam(':reservation_id', $reservation_id);
-                $stmt->bindParam(':payment_method_id', $payment_method_id);
-                $stmt->bindParam(':amount', $reservation['total_price']);
-                $stmt->bindParam(':proof_of_payment', $new_filename);
-                
-                if ($stmt->execute()) {
-                    // Keep reservation status as 'pending' until admin confirms
-                    setFlashMessage('message', 'Pembayaran berhasil diupload. Reservasi Anda akan segera dikonfirmasi oleh admin.', 'alert alert-success');
-                    redirect("my-tickets.php");
-                } else {
-                    setFlashMessage('message', 'Terjadi kesalahan saat menyimpan data pembayaran.', 'alert alert-danger');
-                }
-            } else {
-                setFlashMessage('message', 'Terjadi kesalahan saat mengupload bukti pembayaran.', 'alert alert-danger');
-            }
-        } else {
-            setFlashMessage('message', 'Format file tidak didukung. Silakan upload file JPG, JPEG, PNG, atau PDF.', 'alert alert-danger');
-        }
-    } else {
-        setFlashMessage('message', 'Silakan upload bukti pembayaran.', 'alert alert-danger');
-    }
-}
+// Redirect to checkout with Midtrans SNAP
+// payment.php?id=X → checkout.php?id=X
+redirect("checkout.php?id=" . $reservation_id);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="id">
 
 <head>
     <meta charset="utf-8" />
-    <title>Pembayaran - Taman Kopses Ciseeng</title>
+    <title>Pembayaran - Tirta Sanita Outbound</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="Taman Kopses Ciseeng, Pembayaran, Reservasi" name="keywords" />
-    <meta content="Pembayaran reservasi di Taman Kopses Ciseeng" name="description" />
+    <meta content="Tirta Sanita Outbound, Pembayaran, Reservasi" name="keywords" />
+    <meta content="Pembayaran reservasi di Tirta Sanita Outbound" name="description" />
 
     <!-- Favicon -->
     <link href="../img/favicon.ico" rel="icon" />
@@ -301,7 +232,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         
                                         <!-- Cash Details -->
                                         <div id="cash-details" class="payment-type-details d-none">
-                                            <p class="mb-0">Pembayaran tunai dapat dilakukan langsung di lokasi Taman Kopses Ciseeng.</p>
+                                            <p class="mb-0">Pembayaran tunai dapat dilakukan langsung di lokasi Tirta Sanita Outbound.</p>
                                         </div>
                                         
                                         <!-- Other Details -->
@@ -342,7 +273,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <h5>Syarat dan Ketentuan Reservasi Taman Kopses Ciseeng</h5>
+                    <h5>Syarat dan Ketentuan Reservasi Tirta Sanita Outbound</h5>
                     <ol>
                         <li>Pembayaran harus dilakukan dalam waktu 24 jam setelah reservasi dibuat.</li>
                         <li>Pembatalan reservasi yang telah dikonfirmasi akan dikenakan biaya administrasi sebesar 10% dari total pembayaran.</li>

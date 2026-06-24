@@ -61,10 +61,10 @@ $facilities = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <head>
     <meta charset="utf-8" />
-    <title>E-Ticket #<?php echo $reservation['id']; ?> - Taman Kopses Ciseeng</title>
+    <title>E-Ticket #<?php echo $reservation['id']; ?> - Tirta Sanita Outbound</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="Taman Kopses Ciseeng, E-Ticket, Print" name="keywords" />
-    <meta content="E-Ticket untuk kunjungan ke Taman Kopses Ciseeng" name="description" />
+    <meta content="Tirta Sanita Outbound, E-Ticket, Print" name="keywords" />
+    <meta content="E-Ticket untuk kunjungan ke Tirta Sanita Outbound" name="description" />
 
     <!-- Favicon -->
     <link href="../img/favicon.ico" rel="icon" />
@@ -274,21 +274,6 @@ $facilities = $stmt->fetchAll(PDO::FETCH_ASSOC);
             height: auto;
         }
         
-        .qr-code {
-            text-align: center;
-        }
-        
-        .qr-code img {
-            max-width: 80px;
-            height: auto;
-        }
-        
-        .qr-code p {
-            margin-top: 3px;
-            font-size: 10px;
-            color: #666;
-        }
-        
         .print-instructions {
             background-color: #fff3cd;
             color: #856404;
@@ -353,13 +338,13 @@ $facilities = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 
                 <div class="invoice-company">
                     <div class="company-info">
-                        <h4>Taman Kopses Ciseeng</h4>
+                        <h4>Tirta Sanita Outbound</h4>
                         <p>Jl. Raya Ciseeng, Ciseeng</p>
                         <p>Bogor, Jawa Barat</p>
                         <p>Telp: +62 812-3456-7890</p>
                     </div>
                     <div>
-                        <img src="../img/logo.png" alt="Taman Kopses Ciseeng Logo" class="logo">
+                        <img src="../img/logo.png" alt="Tirta Sanita Outbound Logo" class="logo">
                     </div>
                 </div>
                 
@@ -467,12 +452,7 @@ $facilities = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <p>4. Jam operasional: 08.00 - 17.00 WIB.</p>
             </div>
             
-            <div class="d-flex justify-content-between align-items-center px-4 pb-4">
-                <div class="qr-code">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=TKCT<?php echo $reservation['id']; ?>-<?php echo date('Ymd', strtotime($reservation['visit_date'])); ?>" alt="QR Code">
-                    <p>Scan untuk verifikasi</p>
-                </div>
-                
+            <div class="d-flex justify-content-center align-items-center px-4 pb-4">
                 <div class="text-center">
                     <div style="border-bottom: 1px solid #ddd; width: 150px; margin-bottom: 10px;"></div>
                     <p>Tanda Tangan</p>
@@ -480,7 +460,7 @@ $facilities = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
             
             <div class="invoice-footer">
-                <p>Terima kasih telah memilih Taman Kopses Ciseeng!</p>
+                <p>Terima kasih telah memilih Tirta Sanita Outbound!</p>
                 <p>Untuk informasi lebih lanjut, hubungi kami di +62 812-3456-7890</p>
                 <p>www.tamankopses.com</p>
             </div>

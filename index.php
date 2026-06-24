@@ -3,11 +3,11 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Taman Kopses Ciseeng</title>
+  <title>Tirta Sanita Outbound</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <meta content="Taman Kopses Ciseeng, Ciseeng Bogor, Wisata Edukasi, Harga Tiket, Fasilitas" name="keywords" />
+  <meta content="Tirta Sanita Outbound, Ciseeng Bogor, Wisata Edukasi, Harga Tiket, Fasilitas" name="keywords" />
   <meta
-    content="Informasi lengkap mengenai Harga Tiket, Fasilitas, Wahana, Jam Operasional, dan Lokasi Taman Kopses Ciseeng di Bogor."
+    content="Informasi lengkap mengenai Harga Tiket, Fasilitas, Wahana, Jam Operasional, dan Lokasi Tirta Sanita Outbound di Bogor."
     name="description" />
 
   <!-- Favicon -->
@@ -96,13 +96,13 @@
     }
 
     .header-bg {
-      background: linear-gradient(rgba(77, 195, 135, 0.9), rgba(77, 195, 135, 0.9)), url('img/bg-tkc.png');
+      background: linear-gradient(rgba(77, 195, 135, 0.9), rgba(77, 195, 135, 0.9));
       background-size: cover;
       background-position: center;
     }
 
     .visiting-hours {
-      background: linear-gradient(rgba(77, 195, 135, 0.95), rgba(77, 195, 135, 0.7)), url('img/camp.png');
+      background: linear-gradient(rgba(77, 195, 135, 0.95), rgba(77, 195, 135, 0.7)), url('img/foto1.png');
     }
 
     .footer {
@@ -231,6 +231,66 @@
       border-color: var(--primary-color);
       box-shadow: 0 0 0 0.2rem rgba(77, 195, 135, 0.25);
     }
+
+    /* Header Carousel Responsive */
+    .header-carousel-container {
+      height: 500px;
+      overflow: hidden;
+    }
+
+    .owl-carousel-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .header-carousel-container {
+        height: 300px;
+      }
+
+      .header-carousel-container .display-4 {
+        font-size: 1.5rem !important;
+        margin-bottom: 1rem !important;
+      }
+
+      .header-carousel-container .btn {
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem !important;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .header-carousel-container {
+        height: 240px;
+      }
+
+      .owl-carousel-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .header-carousel-container .display-4 {
+        font-size: 1.25rem !important;
+        margin-bottom: 0.75rem !important;
+      }
+
+      .header-carousel-container .btn-play {
+        width: 40px !important;
+        height: 40px !important;
+      }
+
+      .header-carousel-container h6 {
+        display: none !important;
+      }
+
+      .header-carousel-container .ps-5 {
+        padding-left: 1rem !important;
+      }
+    }
   </style>
 </head>
 
@@ -253,35 +313,39 @@
   <!-- Navbar End -->
 
   <!-- Header Start -->
-  <div class="container-fluid bg-dark p-0 mb-5">
-    <div class="row g-0 flex-column-reverse flex-lg-row">
-      <div class="col-lg-6 p-0 wow fadeIn" data-wow-delay="0.1s">
-        <div class="header-bg h-100 d-flex flex-column justify-content-center p-5">
-          <h1 class="display-4 text-light mb-5">
-            Nikmati Hari Menyenangkan Bersama Keluarga di Taman Kopses Ciseeng
+  <div class="container-fluid p-0 mb-5">
+    <div class="row g-0">
+      <div class="col-lg-12 position-relative header-carousel-container">
+        <!-- Fixed Text Content -->
+        <div class="position-absolute top-0 start-0 h-100 d-flex flex-column justify-content-center ps-5" style="z-index: 10; max-width: 600px;">
+          <h1 class="display-4 text-light mb-4">
+            Nikmati Hari Menyenangkan Bersama Keluarga di Tirta Sanita Outbound
           </h1>
-          <div class="d-flex align-items-center pt-4 animated slideInDown">
-            <a href="" class="btn btn-primary py-sm-3 px-3 px-sm-5 me-5">Read More</a>
+          <div class="d-flex align-items-center animated slideInDown gap-3">
+            <a href="" class="btn btn-primary py-sm-3 px-3 px-sm-5">Read More</a>
             <button type="button" class="btn-play" data-bs-toggle="modal"
-              data-src="https://www.youtube.com/embed/VPrDiWSVD-4?si=M9zofoJLcijbeGbW" data-bs-target="#videoModal">
+              data-src="https://www.youtube.com/embed/nTBccz0uH_M" data-bs-target="#videoModal">
               <span></span>
             </button>
-            <h6 class="text-white m-0 ms-4 d-none d-sm-block">Watch Video</h6>
+            <h6 class="text-white m-0 d-none d-sm-block">Watch Video</h6>
           </div>
         </div>
-      </div>
-      <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-        <div class="owl-carousel header-carousel">
-          <div class="owl-carousel-item">
-            <img class="img-fluid" src="img/carousel2.png" alt="" />
+
+        <!-- Carousel Background -->
+        <div class="owl-carousel header-carousel" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%;">
+          <div class="owl-carousel-item" style="height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            <img class="img-fluid" src="img/foto1.png" alt="" />
           </div>
-          <div class="owl-carousel-item">
-            <img class="img-fluid" src="img/carousel3.png" alt="" />
+          <div class="owl-carousel-item" style="height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            <img class="img-fluid" src="img/foto2.png" alt="" />
           </div>
-          <div class="owl-carousel-item">
-            <img class="img-fluid" src="img/carousel4.png" alt="" />
+          <div class="owl-carousel-item" style="height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            <img class="img-fluid" src="img/foto3.png" alt="" />
           </div>
         </div>
+
+        <!-- Gradient Overlay -->
+        <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(90deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 50%, transparent 100%); z-index: 5;"></div>
       </div>
     </div>
   </div>
@@ -313,13 +377,13 @@
     <div class="container">
       <div class="row g-5">
         <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-          <p><span class="text-primary me-2">#</span>Tentang Taman Kopses Ciseeng</p>
+          <p><span class="text-primary me-2">#</span>Tentang Tirta Sanita Outbound</p>
           <h1 class="display-5 mb-4">
             Mengapa Anda Harus Mengunjungi
-            <span class="text-primary">Taman Kopses Ciseeng</span>!
+            <span class="text-primary">Tirta Sanita Outbound</span>!
           </h1>
           <p class="mb-4">
-            Taman Kopses Ciseeng merupakan destinasi wisata baru di Ciseeng Bogor. Awalnya perkebunan, kini diubah
+            Tirta Sanita Outbound merupakan destinasi wisata baru di Ciseeng Bogor. Awalnya perkebunan, kini diubah
             menjadi objek wisata edukasi yang masih terus dikembangkan. Meskipun begitu, pengunjung terus meningkat
             karena lokasinya yang asri dan berbagai wahana edukatif yang tersedia.
           </p>
@@ -335,11 +399,10 @@
           <h5 class="mb-3">
             <i class="far fa-check-circle text-primary me-3"></i>Harga Terjangkau
           </h5>
-          <a class="btn btn-primary py-3 px-5 mt-3" href="">Baca Selengkapnya</a>
         </div>
         <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
           <div class="img-border">
-            <img class="img-fluid" src="img/bg-tkc.png" alt="" />
+            <img class="img-fluid" src="img/bg-tirtasanita.png" alt="" />
           </div>
         </div>
       </div>
@@ -359,7 +422,7 @@
           <p><span class="text-primary me-2">#</span>Wahana & Fasilitas Kami</p>
           <h1 class="display-5 mb-0">
             Wahana dan Fasilitas Spesial Untuk
-            <span class="text-primary">Pengunjung Taman Kopses Ciseeng</span>
+            <span class="text-primary">Pengunjung Tirta Sanita Outbound</span>
           </h1>
         </div>
         <div class="col-lg-6">
@@ -367,59 +430,36 @@
             <i class="fa fa-3x fa-mobile-alt text-white"></i>
             <div class="ms-4">
               <p class="text-white mb-0">Hubungi kami untuk informasi lebih lanjut</p>
-              <h2 class="text-white mb-0">0858-8686-3808</h2>
+              <h2 class="text-white mb-0">0858-1077-1107</h2>
             </div>
           </div>
         </div>
       </div>
       <div class="row gy-5 gx-4">
-        <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-          <img class="img-fluid mb-3" src="https://img.icons8.com/?size=70&id=e0Uc5D3ZrZmV&format=png&color=4dc387"
-            alt="Icon" />
-          <h5 class="mb-3">Taman Selfie / Photo Spot</h5>
-          <span>Wahana gratis dengan berbagai spot foto unik seperti bingkai Instagram/Facebook, bentuk love, dan spot
-            kayu berpayung.</span>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-          <img class="img-fluid mb-3" src="https://img.icons8.com/?size=70&id=826&format=png&color=4dc387" alt="Icon" />
+        <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+          <i class="fas fa-bolt fa-3x text-primary mb-3"></i>
           <h5 class="mb-3">Flying Fox</h5>
-          <span>Nikmati sensasi melayang dengan Flying Fox. Tarif: Rp. 20.000/orang.</span>
+          <span>Nikmati sensasi melayang dengan Flying Fox.</span>
         </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-          <img class="img-fluid mb-3" src="https://img.icons8.com/?size=70&id=arJ9gRDrPaAf&format=png&color=4dc387"
-            alt="Icon" />
-          <h5 class="mb-3">Sepeda Gantung</h5>
-          <span>Nikmati sensasi melayang dengan Sepeda Gantung di atas kolam</span>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-          <img class="img-fluid mb-3" src="https://img.icons8.com/?size=70&id=EU0betOycOMh&format=png&color=4dc387"
-            alt="Icon" />
-          <h5 class="mb-3">Panahan</h5>
-          <span>Belajar memanah dengan bimbingan instruktur berpengalaman dengan</span>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-          <img class="img-fluid mb-3" src="https://img.icons8.com/?size=70&id=IFvQltoekox2&format=png&color=4dc387"
-            alt="Icon" />
-          <h5 class="mb-3">Air Terjun & Tubing</h5>
-          <span>Berenang di Air Terjun atau coba Tubing dan Perahu Karet.</span>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-          <img class="img-fluid mb-3" src="https://img.icons8.com/?size=70&id=37869&format=png&color=4dc387"
-            alt="Icon" />
-          <h5 class="mb-3">Wahana Adventure (Gratis)</h5>
-          <span>Nikmati permainan seperti spyder, berjalan di atas tambang, melintasi kolam, dan ayunan.</span>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-          <img class="img-fluid mb-3" src="https://img.icons8.com/?size=70&id=x6G1X08IvoOe&format=png&color=4dc387"
-            alt="Icon" />
+        <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+          <i class="fas fa-fish fa-3x text-primary mb-3"></i>
           <h5 class="mb-3">Terapi Ikan & Kolam Anak (Gratis)</h5>
           <span>Akses gratis untuk relaksasi Terapi Ikan dan kesenangan Kolam Anak.</span>
         </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-          <img class="img-fluid mb-3" src="https://img.icons8.com/?size=70&id=9899&format=png&color=4dc387"
-            alt="Icon" />
+        <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+          <i class="fas fa-campground fa-3x text-primary mb-3"></i>
           <h5 class="mb-3">Camping & Kolam Pemancingan</h5>
           <span>Tersedia area Camping gratis dan Kolam Pemancingan.</span>
+        </div>
+        <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+          <i class="fas fa-building fa-3x text-primary mb-3"></i>
+          <h5 class="mb-3">Gedung Serbaguna</h5>
+          <span>Fasilitas lengkap untuk acara, seminar, gathering, dan meeting dengan kapasitas besar.</span>
+        </div>
+        <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+          <i class="fas fa-hotel fa-3x text-primary mb-3"></i>
+          <h5 class="mb-3">Penginapan</h5>
+          <span>Nikmati penginapan nyaman dengan pemandangan alam yang indah untuk pengalaman menginap yang tak terlupakan.</span>
         </div>
       </div>
     </div>
@@ -439,7 +479,7 @@
           <ul class="list-group list-group-flush rounded shadow-sm">
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <span><i class="fas fa-calendar-day text-primary me-2"></i>Sabtu - Kamis</span>
-              <span class="badge bg-success rounded-pill">08:00 - 17:00</span>
+              <span class="badge bg-success rounded-pill">07:00 - 17:00</span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <span><i class="fas fa-calendar-day text-primary me-2"></i>Jumat</span>
@@ -460,7 +500,7 @@
               </div>
               <div class="ms-3">
                 <h5 class="text-white">Alamat</h5>
-                <p class="mb-0">Kp. Tugu Blok Wetan, Cibeuteung Muara, Ciseeng, Bogor, Jawa Barat</p>
+                <p class="mb-0">Jl. Raya Gunung Kapur Parung - Bogor</p>
               </div>
             </div>
             <div class="d-flex">
@@ -469,8 +509,8 @@
               </div>
               <div class="ms-3">
                 <h5 class="text-white">Reservasi & Informasi</h5>
-                <p class="mb-2"><i class="fas fa-phone-alt text-primary me-2"></i>0858-8686-3808</p>
-                <p class="mb-0"><i class="fas fa-envelope text-primary me-2"></i>info@tamankopses.com</p>
+                <p class="mb-2"><i class="fas fa-phone-alt text-primary me-2"></i>0858-1077-1107</p>
+                <p class="mb-0"><i class="fas fa-envelope text-primary me-2"></i>info@tirtasanita.com</p>
               </div>
             </div>
           </div>
@@ -491,17 +531,13 @@
               <h3 class="card-title mb-0">Tiket Masuk</h3>
             </div>
             <div class="card-body text-center p-4">
-              <div class="display-4 mb-3 fw-bold">Rp 10.000</div>
+              <div class="bg-success text-white p-4 fw-bold mb-2" style="font-size: 1.5rem; border-radius: 8px;">
+                <div>Anak <span class="currency">Rp.</span><span class="amount">10.000</span></div>
+                <div>Dewasa <span class="currency">Rp.</span><span class="amount">15.000</span></div>
+              </div>
               <p class="text-muted mb-4">Per Orang</p>
               <hr class="my-4">
-              <ul class="list-unstyled">
-                <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i>Akses ke Taman Selfie</li>
-                <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i>Rakit Bambu</li>
-                <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i>Wahana Adventure</li>
-                <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i>Kolam Anak</li>
-                <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i>Terapi Ikan</li>
-              </ul>
-              <a href="#" class="btn btn-primary mt-3 w-100">Reservasi Sekarang</a>
+              <a href="user/login.php" class="btn btn-primary mt-3 w-100">Reservasi Sekarang</a>
             </div>
           </div>
         </div>
@@ -517,37 +553,18 @@
                 <li class="mb-3 p-2 border-bottom">
                   <div class="d-flex justify-content-between align-items-center">
                     <span><i class="fas fa-bolt text-primary me-2"></i>Flying Fox</span>
-                    <span class="badge bg-primary rounded-pill">Rp 20.000</span>
-                  </div>
-                </li>
-                <li class="mb-3 p-2 border-bottom">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <span><i class="fas fa-bicycle text-primary me-2"></i>Sepeda Gantung</span>
-                    <span class="badge bg-primary rounded-pill">Rp 10.000</span>
-                  </div>
-                </li>
-                <li class="mb-3 p-2 border-bottom">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <span><i class="fas fa-bullseye text-primary me-2"></i>Panahan</span>
-                    <span class="badge bg-primary rounded-pill">Rp 15.000</span>
-                  </div>
-                </li>
-                <li class="mb-3 p-2 border-bottom">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <span><i class="fas fa-water text-primary me-2"></i>Air Terjun</span>
-                    <span class="badge bg-primary rounded-pill">Rp 5.000</span>
-                  </div>
-                </li>
-                <li class="mb-3 p-2 border-bottom">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <span><i class="fas fa-swimming-pool text-primary me-2"></i>Tubing</span>
                     <span class="badge bg-primary rounded-pill">Rp 30.000</span>
                   </div>
                 </li>
-                <li class="mb-3 p-2">
+                <li class="mb-3 p-2 border-bottom">
                   <div class="d-flex justify-content-between align-items-center">
-                    <span><i class="fas fa-ship text-primary me-2"></i>Perahu Karet</span>
+                    <span><i class="fas fa-ship text-primary me-2"></i>Terapi Ikan</span>
                     <span class="badge bg-primary rounded-pill">Rp 10.000</span>
+                  </div>
+                </li>
+                <li class="mb-3 p-2 border-bottom">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span></i>Dan lain-lain</span>
                   </div>
                 </li>
               </ul>
@@ -577,32 +594,13 @@
                 </li>
                 <li class="mb-3 p-2 border-bottom">
                   <div class="d-flex justify-content-between align-items-center">
-                    <span><i class="fas fa-fish text-primary me-2"></i>Kolam Pemancingan (1 Kg)</span>
-                    <span class="badge bg-primary rounded-pill">Rp 40.000</span>
+                    <span><i class="fas fa-building text-primary me-2"></i>Gedung Serbaguna</span>
+                    <span class="badge bg-primary rounded-pill">150 Pax / Rp 5.000.000</span>
                   </div>
                 </li>
                 <li class="mb-3 p-2 border-bottom">
                   <div class="d-flex justify-content-between align-items-center">
-                    <span><i class="fas fa-fish text-primary me-2"></i>Kolam Pemancingan (3 Kg)</span>
-                    <span class="badge bg-primary rounded-pill">Rp 100.000</span>
-                  </div>
-                </li>
-                <li class="mb-3 p-2 border-bottom">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <span><i class="fas fa-seedling text-primary me-2"></i>Pakan Ikan</span>
-                    <span class="badge bg-primary rounded-pill">Rp 5.000</span>
-                  </div>
-                </li>
-                <li class="mb-3 p-2 border-bottom">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <span><i class="fas fa-umbrella-beach text-primary me-2"></i>Gazebo</span>
-                    <span class="badge bg-primary rounded-pill">Rp 10.000</span>
-                  </div>
-                </li>
-                <li class="mb-3 p-2">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <span><i class="fas fa-campground text-primary me-2"></i>Tikar</span>
-                    <span class="badge bg-primary rounded-pill">Rp 5.000</span>
+                    <span></i>Dan lain-lain</span>
                   </div>
                 </li>
               </ul>
@@ -622,7 +620,7 @@
         <div class="col-lg-6">
           <p><span class="text-primary me-2">#</span>Galeri Foto</p>
           <h1 class="display-5 mb-0">
-            Jelajahi Keindahan <span class="text-primary">Taman Kopses</span> Melalui
+            Jelajahi Keindahan <span class="text-primary">Tirta Sanita Outbound</span> Melalui
             Foto
           </h1>
         </div>
@@ -634,11 +632,10 @@
           <div class="row g-4">
             <div class="col-12">
               <a class="animal-item" href="img/g-1.jpg" data-lightbox="animal">
-                <div class="position-relative">
-                  <img class="img-fluid" src="img/g-1.jpg" alt="" />
+                <div class="position-relative" style="height: 300px; overflow: hidden;">
+                  <img class="img-fluid w-100 h-100" src="img/g-1.jpg" alt="" style="object-fit: cover;" />
                   <div class="animal-text p-4">
-                    <p class="text-white small text-uppercase mb-0">Wahana</p>
-                    <h5 class="text-white mb-0">Flying Fox</h5>
+                    <h5 class="text-white mb-0">Outbound</h5>
                   </div>
                 </div>
               </a>
@@ -647,13 +644,25 @@
         </div>
         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
           <div class="row g-4">
-
             <div class="col-12">
               <a class="animal-item" href="img/g-2.jpg" data-lightbox="animal">
-                <div class="position-relative">
-                  <img class="img-fluid" src="img/g-2.jpg" alt="" />
+                <div class="position-relative" style="height: 300px; overflow: hidden;">
+                  <img class="img-fluid w-100 h-100" src="img/g-2.jpg" alt="" style="object-fit: cover;" />
                   <div class="animal-text p-4">
-                    <p class="text-white small text-uppercase mb-0">Wahana</p>
+                    <h5 class="text-white mb-0">Memancing</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+          <div class="row g-4">
+            <div class="col-12">
+              <a class="animal-item" href="img/g-3.jpg" data-lightbox="animal">
+                <div class="position-relative" style="height: 300px; overflow: hidden;">
+                  <img class="img-fluid w-100 h-100" src="img/g-3.jpg" alt="" style="object-fit: cover;" />
+                  <div class="animal-text p-4">
                     <h5 class="text-white mb-0">Flying Fox</h5>
                   </div>
                 </div>
@@ -665,11 +674,80 @@
           <div class="row g-4">
             <div class="col-12">
               <a class="animal-item" href="img/g-3.jpg" data-lightbox="animal">
-                <div class="position-relative">
-                  <img class="img-fluid" src="img/g-3.jpg" alt="" />
+                <div class="position-relative" style="height: 300px; overflow: hidden;">
+                  <img class="img-fluid w-100 h-100" src="img/foto2.png" alt="" style="object-fit: cover;" />
                   <div class="animal-text p-4">
-                    <p class="text-white small text-uppercase mb-0">Wahana</p>
-                    <h5 class="text-white mb-0">Flying Fox</h5>
+                    <h5 class="text-white mb-0">Melukis</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+          <div class="row g-4">
+            <div class="col-12">
+              <a class="animal-item" href="img/g-3.jpg" data-lightbox="animal">
+                <div class="position-relative" style="height: 300px; overflow: hidden;">
+                  <img class="img-fluid w-100 h-100" src="img/foto3.png" alt="" style="object-fit: cover;" />
+                  <div class="animal-text p-4">
+                    <h5 class="text-white mb-0">Gedung Serbaguna</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+          <div class="row g-4">
+            <div class="col-12">
+              <a class="animal-item" href="img/g-3.jpg" data-lightbox="animal">
+                <div class="position-relative" style="height: 300px; overflow: hidden;">
+                  <img class="img-fluid w-100 h-100" src="img/foto9.png" alt="" style="object-fit: cover;" />
+                  <div class="animal-text p-4">
+                    <h5 class="text-white mb-0">Penginapan</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+          <div class="row g-4">
+            <div class="col-12">
+              <a class="animal-item" href="img/g-3.jpg" data-lightbox="animal">
+                <div class="position-relative" style="height: 300px; overflow: hidden;">
+                  <img class="img-fluid w-100 h-100" src="img/foto1.png" alt="" style="object-fit: cover;" />
+                  <div class="animal-text p-4">
+                    <h5 class="text-white mb-0">Camp Area</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+          <div class="row g-4">
+            <div class="col-12">
+              <a class="animal-item" href="img/g-3.jpg" data-lightbox="animal">
+                <div class="position-relative" style="height: 300px; overflow: hidden;">
+                  <img class="img-fluid w-100 h-100" src="img/foto4.png" alt="" style="object-fit: cover;" />
+                  <div class="animal-text p-4">
+                    <h5 class="text-white mb-0">Terapi Ikan</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+          <div class="row g-4">
+            <div class="col-12">
+              <a class="animal-item" href="img/g-3.jpg" data-lightbox="animal">
+                <div class="position-relative" style="height: 300px; overflow: hidden;">
+                  <img class="img-fluid w-100 h-100" src="img/bg-tirtasanita.png" alt="" style="object-fit: cover;" />
+                  <div class="animal-text p-4">
+                    <h5 class="text-white mb-0">Halaman Depan</h5>
                   </div>
                 </div>
               </a>
@@ -698,17 +776,14 @@
         <div class="col-lg-3 col-md-6">
           <h5 class="text-light mb-4">Alamat</h5>
           <p class="mb-2">
-            <i class="fa fa-map-marker-alt me-3"></i>Kp. Tugu Blok Wetan, Cibeuteung Muara, Ciseeng, Bogor, Jawa Barat
+            <i class="fa fa-map-marker-alt me-3"></i>Jl. Raya Gunung Kapur Parung - Bogor
           </p>
           <p class="mb-2">
-            <i class="fa fa-phone-alt me-3"></i>0858-8686-3808
+            <i class="fa fa-phone-alt me-3"></i>0858-1077-1107
           </p>
           <p class="mb-2">
-            <i class="fa fa-envelope me-3"></i>info@example.com
+            <i class="fa fa-envelope me-3"></i>info@tirtasanita.com
           </p>
-          <div class="d-flex pt-2">
-            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-          </div>
         </div>
         <div class="col-lg-3 col-md-6">
           <h5 class="text-light mb-4">Link Cepat</h5>
@@ -728,7 +803,7 @@
         </div>
         <div class="col-lg-3 col-md-6">
           <h5 class="text-light mb-4">Newsletter</h5>
-          <p>Dapatkan info terbaru dan promo menarik dari Taman Kopses Ciseeng.</p>
+          <p>Dapatkan info terbaru dan promo menarik dari Tirta Sanita Outbound.</p>
           <div class="position-relative mx-auto" style="max-width: 400px">
             <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Email Anda" />
             <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">
@@ -742,12 +817,12 @@
       <div class="copyright">
         <div class="row">
           <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-            &copy; <a class="border-bottom" href="#">Taman Kopses Ciseeng</a>, All
+            &copy; <a class="border-bottom" href="#">Tirta Sanita Outbound</a>, All
             Right Reserved.
           </div>
           <div class="col-md-6 text-center text-md-end">
             Dikembangkan oleh
-            <a class="border-bottom" href="#">Tim Taman Kopses</a>
+            <a class="border-bottom" href="#">Tim Tirta Sanita</a>
             <br />Bogor, Jawa Barat
           </div>
         </div>

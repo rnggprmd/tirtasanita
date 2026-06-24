@@ -164,10 +164,10 @@ $recent_reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <head>
     <meta charset="utf-8" />
-    <title>Profil Saya - Taman Kopses Ciseeng</title>
+    <title>Profil Saya - Tirta Sanita Outbound</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="Taman Kopses Ciseeng, Profil, Akun" name="keywords" />
-    <meta content="Kelola profil pengguna di Taman Kopses Ciseeng" name="description" />
+    <meta content="Tirta Sanita Outbound, Profil, Akun" name="keywords" />
+    <meta content="Kelola profil pengguna di Tirta Sanita Outbound" name="description" />
 
     <!-- Favicon -->
     <link href="../img/favicon.ico" rel="icon" />

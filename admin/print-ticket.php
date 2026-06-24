@@ -58,10 +58,10 @@ $facilities = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <head>
     <meta charset="utf-8" />
-    <title>E-Ticket #<?php echo $reservation['id']; ?> - Taman Kopses Ciseeng</title>
+    <title>E-Ticket #<?php echo $reservation['id']; ?> - Tirta Sanita Outbound</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="Taman Kopses Ciseeng, E-Ticket, Print" name="keywords" />
-    <meta content="E-Ticket untuk kunjungan ke Taman Kopses Ciseeng" name="description" />
+    <meta content="Tirta Sanita Outbound, E-Ticket, Print" name="keywords" />
+    <meta content="E-Ticket untuk kunjungan ke Tirta Sanita Outbound" name="description" />
 
     <!-- Favicon -->
     <link href="../img/favicon.ico" rel="icon" />
@@ -134,16 +134,6 @@ $facilities = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
         .ticket-info-value {
             width: 60%;
-        }
-        
-        .ticket-qr {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .ticket-qr img {
-            max-width: 150px;
-            height: auto;
         }
         
         .ticket-footer {
@@ -253,12 +243,12 @@ $facilities = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="ticket-header">
                 <div class="ticket-id">TIKET #<?php echo $reservation['id']; ?></div>
                 <h2>E-TICKET</h2>
-                <p class="mb-0">Taman Kopses Ciseeng</p>
+                <p class="mb-0">Tirta Sanita Outbound</p>
             </div>
             
             <div class="ticket-body">
                 <div class="ticket-logo">
-                    <img src="../img/logo.png" alt="Taman Kopses Ciseeng Logo">
+                    <img src="../img/logo.png" alt="Tirta Sanita Outbound Logo">
                 </div>
                 
                 <div class="ticket-info">
@@ -308,10 +298,6 @@ $facilities = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <?php endif; ?>
                 </div>
                 
-                <div class="ticket-qr">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=TKCT<?php echo $reservation['id']; ?>-<?php echo date('Ymd', strtotime($reservation['visit_date'])); ?>" alt="QR Code">
-                    <p class="mt-2 mb-0">Scan QR code ini saat kedatangan</p>
-                </div>
             </div>
             
             <div class="ticket-footer">

@@ -1,6 +1,6 @@
 <?php
 /**
- * Helper functions for Taman Kopses Ciseeng website
+ * Helper functions for Tirta Sanita Outbound website
  */
 
 // Start session if not already started
@@ -31,6 +31,22 @@ function isLoggedIn() {
  */
 function isAdmin() {
     return isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
+}
+
+/**
+ * Check if user is cashier
+ * @return bool
+ */
+function isCashier() {
+    return isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'cashier';
+}
+
+/**
+ * Check if user is admin or cashier
+ * @return bool
+ */
+function isStaff() {
+    return isAdmin() || isCashier();
 }
 
 /**
@@ -86,17 +102,6 @@ function isWeekday($date) {
 }
 
 /**
- * Generate QR Code for e-ticket
- * @param string $data
- * @return string Base64 encoded QR code image
- */
-function generateQRCode($data) {
-    // Placeholder for QR code generation
-    // In a real implementation, you would use a library like phpqrcode
-    return "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=";
-}
-
-/**
  * Send email
  * @param string $to
  * @param string $subject
@@ -107,7 +112,7 @@ function sendEmail($to, $subject, $message) {
     // Email headers
     $headers = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-    $headers .= 'From: Taman Kopses Ciseeng <noreply@tamankopsesciseeng.com>' . "\r\n";
+    $headers .= 'From: Tirta Sanita Outbound <noreply@tirtasanitaoutbound.com>' . "\r\n";
     
     // Send email
     return mail($to, $subject, $message, $headers);

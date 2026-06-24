@@ -120,10 +120,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
     <meta charset="utf-8" />
-    <title>Registrasi - Taman Kopses Ciseeng</title>
+    <title>Registrasi - Tirta Sanita Outbound</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="Taman Kopses Ciseeng, Registrasi, Akun Baru" name="keywords" />
-    <meta content="Daftar akun baru untuk memesan tiket di Taman Kopses Ciseeng" name="description" />
+    <meta content="Tirta Sanita Outbound, Registrasi, Akun Baru" name="keywords" />
+    <meta content="Daftar akun baru untuk memesan tiket di Tirta Sanita Outbound" name="description" />
 
     <!-- Favicon -->
     <link href="../img/favicon.ico" rel="icon" />
@@ -186,7 +186,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <p class="fs-5 fw-bold text-primary">Registrasi Akun</p>
                     <h1 class="display-5 mb-4">Daftar Akun Baru</h1>
-                    <p class="mb-4">Silakan daftar untuk membuat akun baru di Taman Kopses Ciseeng. Dengan akun ini, Anda dapat memesan tiket untuk berbagai paket outbound dan camping yang kami sediakan.</p>
+                    <p class="mb-4">Silakan daftar untuk membuat akun baru di Tirta Sanita Outbound. Dengan akun ini, Anda dapat memesan tiket untuk berbagai paket outbound dan camping yang kami sediakan.</p>
                     <div class="d-flex align-items-center gap-4 mb-4">
                         <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary rounded-circle" style="width: 50px; height: 50px">
                             <i class="fa fa-user-plus text-white"></i>
@@ -219,7 +219,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="bg-white shadow-sm round p-4 p-lg-5">
                         <div class="text-center mb-4">
                             <h3 class="fw-bold">Buat Akun Baru</h3>
-                            <p class="text-muted">Untuk melakukan reservasi di Taman Kopses Ciseeng</p>
+                            <p class="text-muted">Untuk melakukan reservasi di Tirta Sanita Outbound</p>
                         </div>
                         
                         <?php displayFlashMessage(); ?>

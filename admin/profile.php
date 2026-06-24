@@ -135,10 +135,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html lang="id">
 <head>
     <meta charset="utf-8">
-    <title>Profil Admin - Taman Kopses Ciseeng</title>
+    <title>Profil Admin - Tirta Sanita Outbound</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Taman Kopses Ciseeng, Admin, Profil" name="keywords">
-    <meta content="Admin panel untuk mengelola profil admin di Taman Kopses Ciseeng" name="description">
+    <meta content="Tirta Sanita Outbound, Admin, Profil" name="keywords">
+    <meta content="Admin panel untuk mengelola profil admin di Tirta Sanita Outbound" name="description">
 
     <!-- Favicon -->
     <link href="../img/favicon.ico" rel="icon">
@@ -156,164 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Admin Stylesheet -->
-    <style>
-        :root {
-            --primary-color: #4dc387;
-            --primary-dark: #3da876;
-            --primary-light: #e8f5f0;
-            --white: #ffffff;
-            --light-bg: #f8f9fa;
-            --dark-text: #2c3e50;
-            --gray-text: #6c757d;
-        }
-
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: var(--light-bg);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Quicksand', sans-serif;
-            font-weight: 700;
-        }
-
-        .bg-primary {
-            background-color: var(--primary-color) !important;
-        }
-
-        .text-primary {
-            color: var(--primary-color) !important;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-dark);
-            border-color: var(--primary-dark);
-        }
-
-        .sidebar {
-            width: 250px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100vh;
-            z-index: 999;
-            background-color: var(--white);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
-        }
-
-        .sidebar .sidebar-header {
-            padding: 20px;
-            background-color: var(--primary-color);
-            color: var(--white);
-        }
-
-        .sidebar .sidebar-menu {
-            padding: 20px 0;
-        }
-
-        .sidebar .sidebar-menu .nav-link {
-            padding: 12px 20px;
-            color: var(--dark-text);
-            border-left: 4px solid transparent;
-            transition: all 0.3s;
-        }
-
-        .sidebar .sidebar-menu .nav-link:hover,
-        .sidebar .sidebar-menu .nav-link.active {
-            background-color: var(--primary-light);
-            border-left-color: var(--primary-color);
-            color: var(--primary-color);
-        }
-
-        .sidebar .sidebar-menu .nav-link i {
-            margin-right: 10px;
-            width: 20px;
-            text-align: center;
-        }
-
-        .main-content {
-            margin-left: 250px;
-            padding: 20px;
-            flex: 1;
-        }
-
-        .card {
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
-            margin-bottom: 20px;
-        }
-
-        .card-header {
-            background-color: var(--white);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            padding: 15px 20px;
-        }
-
-        .card-body {
-            padding: 20px;
-        }
-
-        .navbar {
-            background-color: var(--white);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .profile-header {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 30px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
-        .profile-img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background-color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-
-        .form-label {
-            font-weight: 600;
-            color: var(--dark-text);
-        }
-
-        .input-group-text {
-            background-color: var(--primary-light);
-            color: var(--primary-color);
-            border-color: #ced4da;
-        }
-
-        @media (max-width: 991.98px) {
-            .sidebar {
-                margin-left: -250px;
-            }
-            
-            .sidebar.active {
-                margin-left: 0;
-            }
-            
-            .main-content {
-                margin-left: 0;
-            }
-        }
-    </style>
+    <link href="admin-style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -329,7 +172,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <i class="fas fa-bars"></i>
                 </button>
                 <a class="navbar-brand d-none d-lg-block" href="dashboard.php">
-                    <span>Taman Kopses Ciseeng</span>
+                    <span>Tirta Sanita Outbound</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

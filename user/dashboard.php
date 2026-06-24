@@ -34,10 +34,10 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <head>
     <meta charset="utf-8" />
-    <title>Dashboard - Taman Kopses Ciseeng</title>
+    <title>Dashboard - Tirta Sanita Outbound</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="Taman Kopses Ciseeng, Dashboard, Reservasi" name="keywords" />
-    <meta content="Dashboard pengguna Taman Kopses Ciseeng" name="description" />
+    <meta content="Tirta Sanita Outbound, Dashboard, Reservasi" name="keywords" />
+    <meta content="Dashboard pengguna Tirta Sanita Outbound" name="description" />
 
     <!-- Favicon -->
     <link href="../img/favicon.ico" rel="icon" />
@@ -138,7 +138,7 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <i class="fas fa-ticket-alt me-2"></i>Buat Reservasi Baru
                             </a>
                             <a href="my-tickets.php" class="btn btn-outline-primary py-3 rounded-pill">
-                                <i class="fas fa-qrcode me-2"></i>Tiket Saya
+                                <i class="fas fa-ticket-alt me-2"></i>Tiket Saya
                             </a>
                             <a href="profile.php" class="btn btn-outline-primary py-3 rounded-pill">
                                 <i class="fas fa-user-cog me-2"></i>Pengaturan Akun
@@ -159,7 +159,7 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <div class="text-center py-5 bg-primary-light round">
                                 <i class="fas fa-ticket-alt fa-4x text-primary mb-4"></i>
                                 <h4 class="mb-3">Belum ada reservasi</h4>
-                                <p class="text-muted mb-4">Anda belum memiliki reservasi. Silakan buat reservasi baru untuk menikmati fasilitas di Taman Kopses Ciseeng.</p>
+                                <p class="text-muted mb-4">Anda belum memiliki reservasi. Silakan buat reservasi baru untuk menikmati fasilitas di Tirta Sanita Outbound.</p>
                                 <a href="reservation.php" class="btn btn-primary rounded-pill px-4 py-2">
                                     <i class="fas fa-plus-circle me-2"></i>Buat Reservasi Sekarang
                                 </a>

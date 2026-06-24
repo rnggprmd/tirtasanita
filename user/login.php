@@ -54,19 +54,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $hashed_password = $row["password"];
                         $role = $row["role"];
                         
-                        if (password_verify($password, $hashed_password)) {
-                            // Password is correct, start a new session
-                            session_start();
-                            
-                            // Store data in session variables
+                        // Debug logging
+                        error_log("Login attempt: whatsapp=$whatsapp, input_password=$password, db_password=$hashed_password, match=" . ($password === $hashed_password ? "true" : "false"));
+                        
+                        if ($password === $hashed_password) {
+                            // Password is correct, store session variables
+                            // Session is already started in functions.php
                             $_SESSION["user_id"] = $id;
                             $_SESSION["user_name"] = $name;
                             $_SESSION["user_whatsapp"] = $whatsapp;
                             $_SESSION["user_role"] = $role;
                             
+                            // Debug log
+                            error_log("Login successful for: " . $whatsapp . " with role: " . $role);
+                            error_log("Session data: " . json_encode($_SESSION));
+                            
                             // Redirect user to appropriate dashboard
                             if ($role === 'admin') {
-                                redirect("../admin/index.php");
+                                redirect("../admin/dashboard.php");
                             } else {
                                 redirect("dashboard.php");
                             }
@@ -98,10 +103,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
     <meta charset="utf-8" />
-    <title>Login - Taman Kopses Ciseeng</title>
+    <title>Login - Tirta Sanita Outbound</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="Taman Kopses Ciseeng, Login, Akun" name="keywords" />
-    <meta content="Login ke akun Anda untuk memesan tiket di Taman Kopses Ciseeng" name="description" />
+    <meta content="Tirta Sanita Outbound, Login, Akun" name="keywords" />
+    <meta content="Login ke akun Anda untuk memesan tiket di Tirta Sanita Outbound" name="description" />
 
     <!-- Favicon -->
     <link href="../img/favicon.ico" rel="icon" />
@@ -224,8 +229,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <h4 class="text-primary mb-3"><i class="fas fa-question-circle me-2"></i>Butuh Bantuan?</h4>
                             <p class="mb-2">Jika Anda mengalami kesulitan saat login:</p>
                             <ul class="list-unstyled mb-0">
-                                <li class="mb-2"><i class="fas fa-phone-alt text-primary me-2"></i>Hubungi kami di 0858-8686-3808</li>
-                                <li><i class="fas fa-envelope text-primary me-2"></i>Email: info@tamankopsesciseeng.com</li>
+                                <li class="mb-2"><i class="fas fa-phone-alt text-primary me-2"></i>Hubungi kami di 0858-1077-1107</li>
+                                <li><i class="fas fa-envelope text-primary me-2"></i>Email: info@tirtasanitaoutbound.com</li>
                             </ul>
                         </div>
                     </div>

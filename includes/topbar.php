@@ -3,20 +3,20 @@
         <div class="col-lg-7 px-5 text-start">
             <div class="h-100 d-inline-flex align-items-center py-3 me-4">
                 <small class="fa fa-map-marker-alt text-primary me-2"></small>
-                <small>Kp. Tugu Blok Wetan, Cibeuteung Muara, Ciseeng, Bogor, Jawa Barat</small>
+                <small>Jl. Raya Gunung Kapur Parung - Bogor</small>
             </div>
             <div class="h-100 d-inline-flex align-items-center py-3">
                 <small class="far fa-clock text-primary me-2"></small>
-                <small>Sabtu - Kamis : 08.00 AM - 05.00 PM</small>
+                <small>07.00 AM - 17.00 PM kecuali Hari Jumat</small>
             </div>
         </div>
         <div class="col-lg-5 px-5 text-end">
             <div class="h-100 d-inline-flex align-items-center py-3 me-4">
                 <small class="fa fa-phone-alt text-primary me-2"></small>
-                <small>0858-8686-3808</small>
+                <small>0858-1077-1107</small>
             </div>
             <div class="h-100 d-inline-flex align-items-center">
-                <a class="btn btn-sm-square bg-white text-primary me-0" href="https://www.instagram.com/tamankopsesciseeng" target="_blank">
+                <a class="btn btn-sm-square bg-white text-primary me-0" href="https://www.instagram.com/tirtasanitaoutbound" target="_blank">
                     <i class="fab fa-instagram"></i>
                 </a>
             </div>

@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $ticket_url = $base_url . "/tkc/user/print-ticket.php?id=" . $reservation['id'];
         
         // Generate notification message
-        $message = "🎫 *NOTIFIKASI RESERVASI TAMAN KOPSES CISEENG* 🎫\n\n";
+        $message = "🎫 *NOTIFIKASI RESERVASI TIRTA SANITA OUTBOUND* 🎫\n\n";
         $message .= "Halo " . $reservation['user_name'] . ",\n\n";
         $message .= "Reservasi Anda dengan nomor #" . $reservation['id'] . " telah DIKONFIRMASI.\n\n";
         $message .= "Detail Reservasi:\n";
@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $message .= "Silakan cetak tiket Anda melalui link berikut:\n";
         $message .= $ticket_url . "\n\n";
         $message .= "Atau melalui halaman 'Tiket Saya' di website kami.\n\n";
-        $message .= "Terima kasih telah memilih Taman Kopses Ciseeng! 🌿";
+        $message .= "Terima kasih telah memilih Tirta Sanita Outbound! 🌿";
         
         // Encode message for URL
         $encoded_message = urlencode($message);
@@ -108,10 +108,10 @@ function formatWhatsAppNumber($number) {
 
 <head>
     <meta charset="utf-8">
-    <title>Kirim Tiket - Taman Kopses Ciseeng</title>
+    <title>Kirim Tiket - Tirta Sanita Outbound</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Taman Kopses Ciseeng, Admin, Kirim Tiket" name="keywords">
-    <meta content="Admin panel untuk mengirim tiket di Taman Kopses Ciseeng" name="description">
+    <meta content="Tirta Sanita Outbound, Admin, Kirim Tiket" name="keywords">
+    <meta content="Admin panel untuk mengirim tiket di Tirta Sanita Outbound" name="description">
 
     <!-- Favicon -->
     <link href="../img/favicon.ico" rel="icon">
@@ -129,126 +129,7 @@ function formatWhatsAppNumber($number) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Admin Stylesheet -->
-    <style>
-        :root {
-            --primary-color: #4dc387;
-            --primary-dark: #3da876;
-            --primary-light: #e8f5f0;
-            --white: #ffffff;
-            --light-bg: #f8f9fa;
-            --dark-text: #2c3e50;
-            --gray-text: #6c757d;
-        }
-
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: var(--light-bg);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Quicksand', sans-serif;
-            font-weight: 700;
-        }
-
-        .bg-primary {
-            background-color: var(--primary-color) !important;
-        }
-
-        .text-primary {
-            color: var(--primary-color) !important;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-dark);
-            border-color: var(--primary-dark);
-        }
-
-        .sidebar {
-            width: 250px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100vh;
-            z-index: 999;
-            background-color: var(--white);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
-        }
-
-        .sidebar .sidebar-header {
-            padding: 20px;
-            background-color: var(--primary-color);
-            color: var(--white);
-        }
-
-        .sidebar .sidebar-menu {
-            padding: 20px 0;
-        }
-
-        .sidebar .sidebar-menu .nav-link {
-            padding: 12px 20px;
-            color: var(--dark-text);
-            border-left: 4px solid transparent;
-            transition: all 0.3s;
-        }
-
-        .sidebar .sidebar-menu .nav-link:hover,
-        .sidebar .sidebar-menu .nav-link.active {
-            background-color: var(--primary-light);
-            border-left-color: var(--primary-color);
-        }
-
-        .sidebar .sidebar-menu .nav-link i {
-            width: 25px;
-            text-align: center;
-            margin-right: 10px;
-        }
-
-        .main-content {
-            margin-left: 250px;
-            min-height: 100vh;
-            padding: 20px;
-            transition: all 0.3s;
-        }
-
-        @media (max-width: 991.98px) {
-            .sidebar {
-                margin-left: -250px;
-            }
-            .sidebar.active {
-                margin-left: 0;
-            }
-            .main-content {
-                margin-left: 0;
-            }
-        }
-
-        .card {
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
-            border: none;
-        }
-
-        .card-header {
-            background-color: var(--white);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .table th {
-            font-weight: 600;
-        }
-
-        .badge {
-            padding: 0.5em 0.75em;
-        }
-    </style>
+    <link href="admin-style.css" rel="stylesheet">
 </head>
 
 <body>

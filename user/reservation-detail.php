@@ -85,10 +85,10 @@ $payment = $stmt->rowCount() > 0 ? $stmt->fetch(PDO::FETCH_ASSOC) : null;
 
 <head>
     <meta charset="utf-8" />
-    <title>Detail Reservasi - Taman Kopses Ciseeng</title>
+    <title>Detail Reservasi - Tirta Sanita Outbound</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="Taman Kopses Ciseeng, Detail Reservasi, Tiket" name="keywords" />
-    <meta content="Detail reservasi di Taman Kopses Ciseeng" name="description" />
+    <meta content="Tirta Sanita Outbound, Detail Reservasi, Tiket" name="keywords" />
+    <meta content="Detail reservasi di Tirta Sanita Outbound" name="description" />
 
     <!-- Favicon -->
     <link href="../img/favicon.ico" rel="icon" />
@@ -308,57 +308,7 @@ $payment = $stmt->rowCount() > 0 ? $stmt->fetch(PDO::FETCH_ASSOC) : null;
                                 <?php endif; ?>
                             </div>
 
-                            <?php if (!empty($payment['proof_of_payment'])): ?>
-                                <div class="mt-4">
-                                    <h6 class="mb-2">Bukti Pembayaran</h6>
-                                    <div class="payment-proof-thumbnail mb-2">
-                                        <a href="../uploads/payments/<?php echo $payment['proof_of_payment']; ?>"
-                                            data-lightbox="proof-of-payment"
-                                            data-title="Bukti Pembayaran Reservasi #<?php echo $reservation['id']; ?>">
-                                            <img src="../uploads/payments/<?php echo $payment['proof_of_payment']; ?>"
-                                                alt="Bukti Pembayaran" class="img-thumbnail"
-                                                style="max-height: 150px; max-width: 100%;">
-                                        </a>
-                                    </div>
-                                    <a href="../uploads/payments/<?php echo $payment['proof_of_payment']; ?>"
-                                        data-lightbox="proof-of-payment-btn"
-                                        data-title="Bukti Pembayaran Reservasi #<?php echo $reservation['id']; ?>"
-                                        class="btn btn-sm btn-outline-primary rounded-pill">
-                                        <i class="fas fa-search-plus me-1"></i> Lihat Bukti Pembayaran
-                                    </a>
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                    <?php endif; ?>
-                </div>
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="bg-white shadow-sm round p-4 p-lg-5 mb-4">
-                        <h4 class="fw-bold mb-4"><i class="fas fa-tasks me-2 text-primary"></i>Aksi Reservasi</h4>
-
-                        <?php if ($reservation['status'] == 'pending'): ?>
-                            <?php if ($payment && !empty($payment['proof_of_payment'])): ?>
-                                <div class="alert alert-info mb-4 round">
-                                    <div class="d-flex">
-                                        <div class="me-3">
-                                            <i class="fas fa-info-circle fa-2x text-info"></i>
-                                        </div>
-                                        <div>
-                                            <h5 class="alert-heading mb-2">Menunggu Konfirmasi</h5>
-                                            <p class="mb-0">Bukti pembayaran Anda telah diunggah dan sedang menunggu konfirmasi
-                                                admin. Kami akan memproses pembayaran Anda segera.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php else: ?>
-                                <div class="alert alert-warning mb-4 round">
-                                    <div class="d-flex">
-                                        <div class="me-3">
-                                            <i class="fas fa-exclamation-circle fa-2x text-warning"></i>
-                                        </div>
-                                        <div>
-                                            <h5 class="alert-heading mb-2">Menunggu Pembayaran</h5>
-                                            <p class="mb-0">Reservasi Anda sedang menunggu pembayaran. Silakan lakukan
-                                                pembayaran untuk mengkonfirmasi reservasi Anda.</p>
+                        <?php if ($reservation['status'] == 'pending'): ?>                                                pembayaran untuk mengkonfirmasi reservasi Anda.</p>
                                         </div>
                                     </div>
                                 </div>

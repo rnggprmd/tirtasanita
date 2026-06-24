@@ -2,8 +2,8 @@
 require_once '../config/database.php';
 require_once '../includes/functions.php';
 
-// Check if user is logged in as admin
-if (!isLoggedIn() || !isAdmin()) {
+// Check if user is logged in as admin or cashier
+if (!isLoggedIn() || (!isAdmin() && !isCashier())) {
     setFlashMessage('message', 'Anda tidak memiliki akses ke halaman ini.', 'alert alert-danger');
     redirect("index.php");
 }
@@ -122,10 +122,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
 
 <head>
     <meta charset="utf-8">
-    <title>Detail Reservasi - Taman Kopses Ciseeng</title>
+    <title>Detail Reservasi - Tirta Sanita Outbound</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Taman Kopses Ciseeng, Admin, Detail Reservasi" name="keywords">
-    <meta content="Admin panel untuk melihat detail reservasi di Taman Kopses Ciseeng" name="description">
+    <meta content="Tirta Sanita Outbound, Admin, Detail Reservasi" name="keywords">
+    <meta content="Admin panel untuk melihat detail reservasi di Tirta Sanita Outbound" name="description">
 
     <!-- Favicon -->
     <link href="../img/favicon.ico" rel="icon">
@@ -147,127 +147,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
     <link href="../lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
     <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
 
-    <!-- Admin Stylesheet -->
-    <style>
-        :root {
-            --primary-color: #4dc387;
-            --primary-dark: #3da876;
-            --primary-light: #e8f5f0;
-            --white: #ffffff;
-            --light-bg: #f8f9fa;
-            --dark-text: #2c3e50;
-            --gray-text: #6c757d;
-        }
-
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: var(--light-bg);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Quicksand', sans-serif;
-            font-weight: 700;
-        }
-
-        .bg-primary {
-            background-color: var(--primary-color) !important;
-        }
-
-        .text-primary {
-            color: var(--primary-color) !important;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-dark);
-            border-color: var(--primary-dark);
-        }
-
-        .sidebar {
-            width: 250px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100vh;
-            z-index: 999;
-            background-color: var(--white);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
-        }
-
-        .sidebar .sidebar-header {
-            padding: 20px;
-            background-color: var(--primary-color);
-            color: var(--white);
-        }
-
-        .sidebar .sidebar-menu {
-            padding: 20px 0;
-        }
-
-        .sidebar .sidebar-menu .nav-link {
-            padding: 12px 20px;
-            color: var(--dark-text);
-            border-left: 4px solid transparent;
-            transition: all 0.3s;
-        }
-
-        .sidebar .sidebar-menu .nav-link:hover,
-        .sidebar .sidebar-menu .nav-link.active {
-            background-color: var(--primary-light);
-            border-left-color: var(--primary-color);
-        }
-
-        .sidebar .sidebar-menu .nav-link i {
-            width: 25px;
-            text-align: center;
-            margin-right: 10px;
-        }
-
-        .main-content {
-            margin-left: 250px;
-            min-height: 100vh;
-            padding: 20px;
-            transition: all 0.3s;
-        }
-
-        @media (max-width: 991.98px) {
-            .sidebar {
-                margin-left: -250px;
-            }
-            .sidebar.active {
-                margin-left: 0;
-            }
-            .main-content {
-                margin-left: 0;
-            }
-        }
-
-        .card {
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
-            border: none;
-        }
-
-        .card-header {
-            background-color: var(--white);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .table th {
-            font-weight: 600;
-        }
-
-        .badge {
-            padding: 0.5em 0.75em;
-        }
-    </style>
+    <!-- Admin Stylesheet (Unified Style) -->
+    <link href="admin-style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -438,31 +319,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
                                             <th>Tanggal Pembayaran</th>
                                             <td><?php echo date('d M Y H:i', strtotime($payment['created_at'])); ?></td>
                                         </tr>
-                                        <?php if (!empty($payment['proof_of_payment'])): ?>
-                                            <tr>
-                                                <th>Bukti Pembayaran</th>
-                                                <td>
-                                                    <div class="mb-2">
-                                                        <a href="../uploads/payments/<?php echo $payment['proof_of_payment']; ?>" 
-                                                        data-lightbox="proof-of-payment" 
-                                                        data-title="Bukti Pembayaran Reservasi #<?php echo $reservation['id']; ?>" 
-                                                        class="btn btn-primary">
-                                                            <i class="fas fa-image me-1"></i> Lihat Bukti Pembayaran
-                                                        </a>
-                                                    </div>
-                                                    <div class="payment-proof-thumbnail mt-2">
-                                                        <a href="../uploads/payments/<?php echo $payment['proof_of_payment']; ?>" 
-                                                        data-lightbox="proof-of-payment-thumb" 
-                                                        data-title="Bukti Pembayaran Reservasi #<?php echo $reservation['id']; ?>">
-                                                            <img src="../uploads/payments/<?php echo $payment['proof_of_payment']; ?>" 
-                                                                alt="Bukti Pembayaran" 
-                                                                class="img-thumbnail" 
-                                                                style="max-height: 150px; max-width: 100%;">
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        <?php endif; ?>
                                     </table>
                                 </div>
                             </div>

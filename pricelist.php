@@ -1,6 +1,6 @@
 <?php
 // Set page title
-$pageTitle = "Paket Outbound & Camping - Taman Kopses Ciseeng";
+$pageTitle = "Paket Outbound & Camping - Tirta Sanita Outbound";
 
 // Include database connection
 require_once 'config/database.php';
@@ -53,8 +53,8 @@ header('Content-Type: text/html; charset=utf-8');
   <meta charset="utf-8" />
   <title><?php echo $pageTitle; ?></title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <meta content="Taman Kopses Ciseeng, Paket Outbound, Camping Ground, Harga, Fasilitas" name="keywords" />
-  <meta content="Informasi lengkap mengenai Paket Outbound, Camping Ground, dan Harga di Taman Kopses Ciseeng Bogor."
+  <meta content="Tirta Sanita Outbound, Paket Outbound, Camping Ground, Harga, Fasilitas" name="keywords" />
+  <meta content="Informasi lengkap mengenai Paket Outbound, Camping Ground, dan Harga di Tirta Sanita Outbound Bogor."
     name="description" />
 
   <!-- Favicon -->
@@ -357,21 +357,21 @@ header('Content-Type: text/html; charset=utf-8');
   <!-- Navbar End -->
 
   <!-- Page Header Start -->
-  <div class="container-fluid header-bg py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
-    <div class="container py-5">
+  <div class="container-fluid header-bg py-5 mb-5 wow fadeIn" data-wow-delay="0.1s" style="background: linear-gradient(rgba(77, 195, 135, 0.7), rgba(77, 195, 135, 0.7)), url('img/foto1.png') center/cover no-repeat; position: relative; overflow: hidden;">
+    <div class="container py-5 position-relative" style="z-index: 10;">
       <div class="row align-items-center">
         <div class="col-lg-6">
           <h1 class="display-4 text-white mb-3 animated slideInDown">
             Paket Outbound & Camping
           </h1>
           <p class="text-white lead mb-4 animated slideInDown">Nikmati pengalaman outbound dan camping yang tak
-            terlupakan di Taman Kopses Ciseeng</p>
+            terlupakan di Tirta Sanita Outbound</p>
           <nav aria-label="breadcrumb animated slideInDown">
             <ol class="breadcrumb mb-0">
               <li class="breadcrumb-item">
                 <a class="text-white" href="index.php">Home</a>
               </li>
-              <li class="breadcrumb-item text-primary active" aria-current="page">
+              <li class="breadcrumb-item text-white active" aria-current="page">
                 Paket & Harga
               </li>
             </ol>
@@ -391,7 +391,7 @@ header('Content-Type: text/html; charset=utf-8');
     <div class="container">
       <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
         <h1 class="display-5 mb-4">Paket Outbound & Camping Ground</h1>
-        <p class="text-muted mb-4">Nikmati berbagai paket outbound dan camping di Taman Kopses Ciseeng dengan harga
+        <p class="text-muted mb-4">Nikmati berbagai paket outbound dan camping di Tirta Sanita Outbound dengan harga
           terjangkau dan fasilitas lengkap</p>
         <div class="d-flex justify-content-center gap-3 mb-4">
           <a href="#outbound-packages" class="btn btn-primary btn-sm rounded-pill px-4 py-2">Paket Outbound</a>
@@ -406,7 +406,7 @@ header('Content-Type: text/html; charset=utf-8');
             <div class="col-md-10 text-start">
               <h5 class="fw-bold">Minimal Peserta: 35 Orang/Pack</h5>
               <p class="mb-0">Untuk reservasi dan informasi lebih lanjut, silahkan hubungi kami di
-                <strong>0858-8686-3808</strong>
+                <strong>0858-1077-1107</strong>
               </p>
             </div>
           </div>
@@ -420,7 +420,22 @@ header('Content-Type: text/html; charset=utf-8');
             <h2>Rundown Paket Outbound</h2>
           </div>
         </div>
+
+        <!-- Filter Buttons -->
         <div class="col-12 mb-4 wow fadeInUp" data-wow-delay="0.2s">
+          <div class="d-flex flex-wrap gap-2 justify-content-center">
+            <button class="btn btn-primary rounded-pill px-4 py-2 filter-btn" data-filter="all" onclick="filterPackages('all')">
+              Semua Paket
+            </button>
+            <?php foreach ($categories as $category): ?>
+              <button class="btn btn-outline-primary rounded-pill px-4 py-2 filter-btn" data-filter="<?php echo $category['id']; ?>" onclick="filterPackages(<?php echo $category['id']; ?>)">
+                <?php echo htmlspecialchars($category['name']); ?>
+              </button>
+            <?php endforeach; ?>
+          </div>
+        </div>
+
+        <div class="col-12 mb-4 wow fadeInUp" data-wow-delay="0.3s">
           <div class="bg-light p-4 rounded-3 border-start border-5 border-primary">
             <div class="d-flex align-items-center">
               <i class="fas fa-lightbulb fa-2x text-primary me-3"></i>
@@ -432,201 +447,10 @@ header('Content-Type: text/html; charset=utf-8');
             </div>
           </div>
         </div>
-
-        <!-- Susunan Acara Tingkat Anak -->
-        <div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-          <div class="price-card">
-            <div class="price-header">
-              <h3>Susunan Acara Tingkat Anak</h3>
-            </div>
-            <div class="price-body">
-              <h4>WARMING UP</h4>
-              <ol>
-                <li>Senam Pagi</li>
-                <li>Jelajah Sekitar</li>
-                <li>Angklung</li>
-              </ol>
-
-              <h4>ICE BREAKING</h4>
-              <ol>
-                <li>Senam Otak/Dance</li>
-                <li>Tepuk Bayi Shark</li>
-                <li>Kepala Pundak</li>
-                <li>Boom Chiki Boom</li>
-              </ol>
-
-              <h4>OUTBOUND GAMES</h4>
-              <ol>
-                <li>Pindah Sarung</li>
-                <li>Pindah Air</li>
-                <li>Pipa Bocor</li>
-                <li>Tower Minef</li>
-                <li>Estafet Karet</li>
-                <li>Estafet Tepung</li>
-                <li>Bakiak</li>
-                <li>Saka Bola</li>
-              </ol>
-
-              <h4>OUTBOUND TANTANGAN</h4>
-              <ol>
-                <li>Flying Fox</li>
-                <li>Jaring Laba-laba</li>
-                <li>Tarzan Swing</li>
-                <li>Jembatan Goyang</li>
-                <li>Jembatan Tali</li>
-                <li>Jembatan Roll</li>
-              </ol>
-
-              <h4>OUTBOUND KREATIF</h4>
-              <ol>
-                <li>Menggambar</li>
-                <li>Pewarna Kain</li>
-                <li>Finger Art</li>
-              </ol>
-
-              <h4>ARMY KIDS</h4>
-              <ol>
-                <li>Tiarap Jalan</li>
-                <li>Merangkak</li>
-                <li>Salawatan</li>
-                <li>Jembatan Bambu</li>
-                <li>Jembatan Ban</li>
-                <li>Terowongan Ban</li>
-                <li>Titian Papan</li>
-              </ol>
-
-              <h4>OUTBOUND WATER ACTIVITY</h4>
-              <ol>
-                <li>Mencari Mutiara Kambang</li>
-                <li>Memindahkan Kelereng</li>
-                <li>Memindahkan Air</li>
-                <li>Membuat Hujan Buatan</li>
-                <li>Estafet Botol Angkat</li>
-                <li>Botol Bowling</li>
-                <li>Memancing Ikan</li>
-                <li>Tubing</li>
-                <li>Kolam Renang Anak</li>
-              </ol>
-            </div>
-          </div>
-        </div>
-
-        <!-- Susunan Acara Tingkat Dewasa -->
-        <div class="col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-          <div class="price-card">
-            <div class="price-header">
-              <h3>Susunan Acara Tingkat Dewasa</h3>
-            </div>
-            <div class="price-body">
-              <h4>WARMING UP</h4>
-              <ol>
-                <li>Peregangan</li>
-                <li>Bersilang</li>
-                <li>Head Body</li>
-                <li>Chicken Family</li>
-                <li>Patung Pancoran</li>
-              </ol>
-
-              <h4>ICE BREAKING</h4>
-              <ol>
-                <li>Senam goyang</li>
-                <li>Chicken Dance</li>
-                <li>Liper Rusa</li>
-                <li>Hello apa kabar</li>
-                <li>Grupung</li>
-              </ol>
-
-              <h4>OUTBOUND GAMES</h4>
-              <ol>
-                <li>Pola wajah mercon</li>
-                <li>Bola meluncur</li>
-                <li>Tangkap belimbing</li>
-                <li>Pipa bocor</li>
-                <li>Karpaan sapi</li>
-                <li>Bakiak</li>
-                <li>Rangku jarat</li>
-                <li>Target bola</li>
-                <li>Pindah air</li>
-                <li>Tarik tambang</li>
-                <li>Push cup</li>
-                <li>Piramida</li>
-              </ol>
-
-              <h4>OUTBOUND TANTANGAN</h4>
-              <ol>
-                <li>Flying Fox</li>
-                <li>Jaring Laba-laba</li>
-                <li>Burma Bridge</li>
-                <li>Elesh wolk</li>
-                <li>Two line</li>
-              </ol>
-
-              <h4>OUTBOUND WATER ACTIVITY</h4>
-              <ol>
-                <li>Pipa Bocor</li>
-                <li>Pukul Bantal</li>
-                <li>Rakit</li>
-                <li>Mandi Air</li>
-                <li>Menangkap Ikan</li>
-                <li>Tubing</li>
-              </ol>
-            </div>
-          </div>
-        </div>
       </div>
 
-      <!-- Price List Dynamic Packages -->
-      <?php foreach ($categories as $category): ?>
-        <div class="package-category mb-5">
-          <div class="row">
-            <div class="col-12 text-center mb-4" id="<?php echo htmlspecialchars($category['id']); ?>">
-              <h3 class="bg-primary text-white py-3 px-5 d-inline-block rounded-pill">
-                <?php echo htmlspecialchars($category['name']); ?>
-              </h3>
-            </div>
-          </div>
-          <div class="row g-4">
-            <?php
-            $packages = getPackagesByCategory($conn, $category['id']);
-            foreach ($packages as $index => $package):
-              $facilities = getPackageFacilities($conn, $package['id']);
-              ?>
-              <div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="price-card">
-                  <div class="price-header">
-                    <h3><?php echo htmlspecialchars($package['name']); ?></h3>
-                  </div>
-                  <div class="price-body">
-                    <div class="bg-success text-white p-4 fw-bold mb-2" style="font-size: 1.5rem; border-radius: 8px;">
-                      <div>Weekday <span class="currency">Rp.</span><span
-                          class="amount"><?php echo number_format($package['price_weekday'], 0, ',', '.'); ?></span></div>
-                      <div>Weekend <span class="currency">Rp.</span><span
-                          class="amount"><?php echo number_format($package['price_weekend'], 0, ',', '.'); ?></span></div>
-                    </div>
-
-                    <?php if (!empty($package['description'])): ?>
-                      <p class="price-amount">
-                        <?php echo htmlspecialchars($package['description']); ?>
-                      </p>
-                    <?php endif; ?>
-
-
-                    <h5>Fasilitas yang didapat :</h5>
-                    <ul class="facility-list">
-
-                      <?php foreach ($facilities as $facility): ?>
-                        <li><i class="<?php echo $facility['icon']; ?>"></i><?php echo htmlspecialchars($facility['name']); ?>
-                        </li>
-                      <?php endforeach; ?>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            <?php endforeach; ?>
-          </div>
-        </div>
-      <?php endforeach; ?>
-
+      <!-- Packages Container -->
+      <div id="packages-container"></div>
 
       <!-- Paket Minimal -->
       <div class="row mb-5">
@@ -657,20 +481,17 @@ header('Content-Type: text/html; charset=utf-8');
         <div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s">
           <div class="price-card">
             <div class="price-header">
-              <h3>Minuman Dingin & Makanan Tambahan</h3>
+              <h3>Paket Catering</h3>
             </div>
             <div class="price-body">
               <div class="text-center mb-4">
-                <img src="https://img.icons8.com/?size=70&id=ganUGT2B3II6&format=png&color=4dc387" alt="Food"
-                  class="img-fluid" style="max-width: 120px;">
+                <i class="fas fa-utensils fa-3x text-primary"></i>
               </div>
               <ul class="facility-list">
-                <li><i class="fas fa-glass-water"></i>Soda Gembira</li>
-                <li><i class="fas fa-glass-water"></i>Bakso Kuah + Air Mineral</li>
-                <li><i class="fas fa-glass-water"></i>Nasi Putih, Ayam Goreng Tepung, Mie Goreng, Sambal Saus, Air
-                  Mineral</li>
-                <li><i class="fas fa-glass-water"></i>Nasi Putih, Ayam Bakar, Sayur Asem, Tahu Tempe, Sambal + Lalapan,
-                  Buah, Kerupuk, Air Mineral</li>
+                <li><i class="fas fa-utensils"></i>Paket Nasi Box - Rp 40.000/orang</li>
+                <li><i class="fas fa-utensils"></i>Paket Nasi Buffet - Rp 50.000/orang</li>
+                <li><i class="fas fa-utensils"></i>Paket Snack Box - Rp 15.000/orang</li>
+                <li><i class="fas fa-coffee"></i>Paket Coffee Break - Rp 25.000/orang</li>
               </ul>
             </div>
           </div>
@@ -683,41 +504,15 @@ header('Content-Type: text/html; charset=utf-8');
             </div>
             <div class="price-body">
               <div class="text-center mb-4">
-                <img src="https://img.icons8.com/?size=70&id=2969&format=png&color=4dc387" alt="Equipment"
-                  class="img-fluid" style="max-width: 120px;">
+                <i class="fas fa-cog fa-3x text-primary"></i>
               </div>
-              <div class="bg-light p-4 rounded-3">
-                <div class="d-flex align-items-center mb-3">
-                  <div class="bg-primary rounded-circle p-2 me-3">
-                    <i class="fas fa-umbrella-beach text-white"></i>
-                  </div>
-                  <span>Perlengkapan Puyung</span>
-                </div>
-                <div class="d-flex align-items-center mb-3">
-                  <div class="bg-primary rounded-circle p-2 me-3">
-                    <i class="fas fa-cloud-rain text-white"></i>
-                  </div>
-                  <span>Jas Hujan</span>
-                </div>
-                <div class="d-flex align-items-center mb-3">
-                  <div class="bg-primary rounded-circle p-2 me-3">
-                    <i class="fas fa-first-aid text-white"></i>
-                  </div>
-                  <span>Obat Obatan Khusus</span>
-                </div>
-                <div class="d-flex align-items-center mb-3">
-                  <div class="bg-primary rounded-circle p-2 me-3">
-                    <i class="fas fa-socks text-white"></i>
-                  </div>
-                  <span>Kaos Kaki</span>
-                </div>
-                <div class="d-flex align-items-center">
-                  <div class="bg-primary rounded-circle p-2 me-3">
-                    <i class="fas fa-tshirt text-white"></i>
-                  </div>
-                  <span>Pakaian Ganti</span>
-                </div>
-              </div>
+              <ul class="facility-list">
+                <li><i class="fas fa-umbrella-beach"></i>Perlengkapan Payung</li>
+                <li><i class="fas fa-cloud-rain"></i>Jas Hujan</li>
+                <li><i class="fas fa-first-aid"></i>Obat Obatan Khusus</li>
+                <li><i class="fas fa-socks"></i>Kaos Kaki</li>
+                <li><i class="fas fa-tshirt"></i>Pakaian Ganti</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -727,17 +522,14 @@ header('Content-Type: text/html; charset=utf-8');
       <div class="row my-5">
         <div class="col-12 wow fadeInUp" data-wow-delay="0.1s">
           <div class="bg-primary text-white p-5 rounded-4 shadow position-relative overflow-hidden">
-            <div class="position-absolute top-0 end-0 p-3">
-              <img src="img/icon/icon-10.png" alt="" class="img-fluid" style="max-width: 150px; opacity: 0.2;">
-            </div>
             <div class="row align-items-center">
               <div class="col-lg-8">
-                <h2 class="mb-3">Siap Untuk Petualangan Seru di Taman Kopses?</h2>
+                <h2 class="mb-3 text-white fw-bold">Siap Untuk Petualangan Seru di Tirta Sanita Outbound?</h2>
                 <p class="lead mb-0">Hubungi kami sekarang untuk reservasi dan dapatkan pengalaman outbound dan camping
                   yang tak terlupakan!</p>
               </div>
               <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
-                <a href="#" class="btn btn-light btn-lg rounded-pill px-5 py-3 shadow-sm">Reservasi Sekarang</a>
+                <a href="user/login.php" class="btn btn-light btn-lg rounded-pill px-5 py-3 shadow-sm">Reservasi Sekarang</a>
               </div>
             </div>
           </div>
@@ -754,20 +546,14 @@ header('Content-Type: text/html; charset=utf-8');
         <div class="col-lg-3 col-md-6">
           <h5 class="text-light mb-4">Alamat</h5>
           <p class="mb-2">
-            <i class="fa fa-map-marker-alt me-3"></i>Kp. Tugu Blok Wetan, Cibeuteung Muara, Ciseeng, Bogor, Jawa Barat
+            <i class="fa fa-map-marker-alt me-3"></i>Jl. Raya Gunung Kapur Parung - Bogor
           </p>
           <p class="mb-2">
-            <i class="fa fa-phone-alt me-3"></i>0858-8686-3808
+            <i class="fa fa-phone-alt me-3"></i>0858-1077-1107
           </p>
           <p class="mb-2">
-            <i class="fa fa-envelope me-3"></i>info@tamankopses.com
+            <i class="fa fa-envelope me-3"></i>info@tirtasanita.com
           </p>
-          <div class="d-flex pt-2">
-            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-          </div>
         </div>
         <div class="col-lg-3 col-md-6">
           <h5 class="text-light mb-4">Link Cepat</h5>
@@ -787,7 +573,7 @@ header('Content-Type: text/html; charset=utf-8');
         </div>
         <div class="col-lg-3 col-md-6">
           <h5 class="text-light mb-4">Newsletter</h5>
-          <p>Dapatkan info terbaru dan promo menarik dari Taman Kopses Ciseeng.</p>
+          <p>Dapatkan info terbaru dan promo menarik dari Tirta Sanita Outbound.</p>
           <div class="position-relative mx-auto" style="max-width: 400px">
             <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Email Anda" />
             <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">
@@ -801,12 +587,12 @@ header('Content-Type: text/html; charset=utf-8');
       <div class="copyright">
         <div class="row">
           <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-            &copy; <a class="border-bottom" href="#">Taman Kopses Ciseeng</a>, All
+            &copy; <a class="border-bottom" href="#">Tirta Sanita Outbound</a>, All
             Right Reserved.
           </div>
           <div class="col-md-6 text-center text-md-end">
             Dikembangkan oleh
-            <a class="border-bottom" href="#">Tim Taman Kopses</a>
+            <a class="border-bottom" href="#">Tim Tirta Sanita</a>
             <br />Bogor, Jawa Barat
           </div>
         </div>
@@ -830,6 +616,136 @@ header('Content-Type: text/html; charset=utf-8');
 
   <!-- Template Javascript -->
   <script src="js/main.js"></script>
+
+  <!-- Package Filter Script -->
+  <script>
+    // Store all packages data from PHP
+    const packagesData = <?php
+    $allPackagesData = [];
+    foreach ($categories as $category) {
+      $packages = getPackagesByCategory($conn, $category['id']);
+      foreach ($packages as $package) {
+        $facilities = getPackageFacilities($conn, $package['id']);
+        $allPackagesData[] = [
+          'id' => $package['id'],
+          'name' => $package['name'],
+          'category_id' => $category['id'],
+          'category_name' => $category['name'],
+          'price_weekday' => $package['price_weekday'],
+          'price_weekend' => $package['price_weekend'],
+          'description' => $package['description'],
+          'facilities' => $facilities
+        ];
+      }
+    }
+    echo json_encode($allPackagesData);
+    ?>;
+
+    // Current active filter
+    let currentFilter = 'all';
+
+    // Initialize packages on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      filterPackages('all');
+    });
+
+    function filterPackages(categoryId) {
+      currentFilter = categoryId;
+      const container = document.getElementById('packages-container');
+      
+      // Update button styles
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('btn-primary');
+        btn.classList.add('btn-outline-primary');
+        if ((categoryId === 'all' && btn.dataset.filter === 'all') ||
+            (btn.dataset.filter == categoryId)) {
+          btn.classList.add('btn-primary');
+          btn.classList.remove('btn-outline-primary');
+        }
+      });
+
+      // Filter packages
+      let filteredPackages = packagesData;
+      if (categoryId !== 'all') {
+        filteredPackages = packagesData.filter(pkg => pkg.category_id == categoryId);
+      }
+
+      // Group packages by category for display
+      const groupedByCategory = {};
+      filteredPackages.forEach(pkg => {
+        if (!groupedByCategory[pkg.category_id]) {
+          groupedByCategory[pkg.category_id] = [];
+        }
+        groupedByCategory[pkg.category_id].push(pkg);
+      });
+
+      // Generate HTML
+      let html = '';
+      
+      Object.keys(groupedByCategory).forEach(catId => {
+        const packages = groupedByCategory[catId];
+        const categoryName = packages[0].category_name;
+
+        html += `
+          <div class="row g-4 mb-5 package-category-section" data-category="${catId}">
+            <div class="col-12">
+              <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
+                <h2>${categoryName}</h2>
+              </div>
+            </div>
+        `;
+
+        packages.forEach((pkg, index) => {
+          const delay = (0.1 + (index * 0.2)).toFixed(1);
+          html += `
+            <div class="col-md-6 wow fadeInUp" data-wow-delay="${delay}s">
+              <div class="price-card">
+                <div class="price-header">
+                  <h3>${pkg.name}</h3>
+                </div>
+                <div class="price-body">
+                  <div class="bg-success text-white p-4 fw-bold mb-2" style="font-size: 1.5rem; border-radius: 8px;">
+                    <div>Weekday <span class="currency">Rp.</span><span class="amount">${formatCurrency(pkg.price_weekday)}</span></div>
+                    <div>Weekend <span class="currency">Rp.</span><span class="amount">${formatCurrency(pkg.price_weekend)}</span></div>
+                  </div>
+          `;
+
+          if (pkg.description) {
+            html += `<p class="price-amount">${pkg.description}</p>`;
+          }
+
+          html += `
+                  <h5>Fasilitas yang didapat :</h5>
+                  <ul class="facility-list">
+          `;
+
+          pkg.facilities.forEach(facility => {
+            html += `<li><i class="${facility.icon}"></i>${facility.name}</li>`;
+          });
+
+          html += `
+                  </ul>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+
+        html += `</div>`;
+      });
+
+      container.innerHTML = html;
+      
+      // Reinitialize WOW.js animations
+      if (typeof WOW !== 'undefined') {
+        new WOW().init();
+      }
+    }
+
+    function formatCurrency(value) {
+      return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+  </script>
 </body>
 
 </html>

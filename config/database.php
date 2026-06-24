@@ -1,12 +1,12 @@
 <?php
 /**
  * Database Connection Configuration
- * Taman Kopses Ciseeng
+ * Tirta Sanita Outbound
  */
 
 class Database {
     private $host = 'localhost';
-    private $db_name = 'tkc_db';
+    private $db_name = 'tirtasanita_db';
     private $username = 'root';
     private $password = '';
     private $conn;

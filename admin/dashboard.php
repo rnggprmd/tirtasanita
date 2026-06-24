@@ -53,10 +53,10 @@ $recent_reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <head>
     <meta charset="utf-8">
-    <title>Admin Dashboard - Taman Kopses Ciseeng</title>
+    <title>Admin Dashboard - Tirta Sanita Outbound</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Taman Kopses Ciseeng, Admin, Dashboard" name="keywords">
-    <meta content="Admin panel untuk mengelola website Taman Kopses Ciseeng" name="description">
+    <meta content="Tirta Sanita Outbound, Admin, Dashboard" name="keywords">
+    <meta content="Admin panel untuk mengelola website Tirta Sanita Outbound" name="description">
 
     <!-- Favicon -->
     <link href="../img/favicon.ico" rel="icon">
@@ -74,245 +74,7 @@ $recent_reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Admin Stylesheet -->
-    <style>
-        :root {
-            --primary-color: #4dc387;
-            --primary-dark: #3da876;
-            --primary-light: #e8f5f0;
-            --white: #ffffff;
-            --light-bg: #f8f9fa;
-            --dark-text: #2c3e50;
-            --gray-text: #6c757d;
-        }
-
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: var(--light-bg);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Quicksand', sans-serif;
-            font-weight: 700;
-        }
-
-        .bg-primary {
-            background-color: var(--primary-color) !important;
-        }
-
-        .text-primary {
-            color: var(--primary-color) !important;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-dark);
-            border-color: var(--primary-dark);
-        }
-
-        .sidebar {
-            width: 250px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100vh;
-            z-index: 999;
-            background-color: var(--white);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
-        }
-
-        .sidebar .sidebar-header {
-            padding: 20px;
-            background-color: var(--primary-color);
-            color: var(--white);
-        }
-
-        .sidebar .sidebar-menu {
-            padding: 20px 0;
-        }
-
-        .sidebar .sidebar-menu .nav-link {
-            padding: 12px 20px;
-            color: var(--dark-text);
-            border-left: 4px solid transparent;
-            transition: all 0.3s;
-        }
-
-        .sidebar .sidebar-menu .nav-link:hover,
-        .sidebar .sidebar-menu .nav-link.active {
-            background-color: var(--primary-light);
-            border-left-color: var(--primary-color);
-            color: var(--primary-color);
-        }
-
-        .sidebar .sidebar-menu .nav-link i {
-            margin-right: 10px;
-            width: 20px;
-            text-align: center;
-        }
-
-        .main-content {
-            margin-left: 250px;
-            padding: 20px;
-            flex: 1;
-        }
-
-        .card {
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
-            margin-bottom: 20px;
-        }
-
-        .card-header {
-            background-color: var(--white);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            padding: 15px 20px;
-        }
-
-        .card-body {
-            padding: 20px;
-        }
-
-        .stat-card {
-            border-radius: 10px;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
-            background-color: var(--white);
-        }
-
-        .stat-card .icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            font-size: 24px;
-            color: var(--white);
-        }
-
-        .stat-card .content h3 {
-            font-size: 24px;
-            margin-bottom: 5px;
-        }
-
-        .stat-card .content p {
-            margin-bottom: 0;
-            color: var(--gray-text);
-        }
-
-        .bg-info-light {
-            background-color: rgba(13, 202, 240, 0.1);
-        }
-
-        .bg-success-light {
-            background-color: rgba(25, 135, 84, 0.1);
-        }
-
-        .bg-warning-light {
-            background-color: rgba(255, 193, 7, 0.1);
-        }
-
-        .bg-danger-light {
-            background-color: rgba(220, 53, 69, 0.1);
-        }
-
-        .text-info {
-            color: #0dcaf0 !important;
-        }
-
-        .text-success {
-            color: #198754 !important;
-        }
-
-        .text-warning {
-            color: #ffc107 !important;
-        }
-
-        .text-danger {
-            color: #dc3545 !important;
-        }
-
-        .bg-info {
-            background-color: #0dcaf0 !important;
-        }
-
-        .bg-success {
-            background-color: #198754 !important;
-        }
-
-        .bg-warning {
-            background-color: #ffc107 !important;
-        }
-
-        .bg-danger {
-            background-color: #dc3545 !important;
-        }
-
-        .navbar {
-            background-color: var(--white);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .navbar-brand {
-            font-family: 'Quicksand', sans-serif;
-            font-weight: 700;
-        }
-
-        .navbar-brand img {
-            width: 30px;
-            margin-right: 10px;
-        }
-
-        .dropdown-menu {
-            border: none;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .dropdown-item:hover {
-            background-color: var(--primary-light);
-            color: var(--primary-color);
-        }
-
-        .dropdown-item.active {
-            background-color: var(--primary-color);
-        }
-
-        .table th {
-            font-weight: 600;
-        }
-
-        .badge {
-            padding: 5px 10px;
-            border-radius: 50px;
-        }
-
-        @media (max-width: 991.98px) {
-            .sidebar {
-                margin-left: -250px;
-            }
-            .sidebar.active {
-                margin-left: 0;
-            }
-            .main-content {
-                margin-left: 0;
-            }
-            .main-content.active {
-                margin-left: 250px;
-            }
-        }
-    </style>
+    <link href="admin-style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -328,7 +90,7 @@ $recent_reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <i class="fas fa-bars"></i>
                 </button>
                 <a class="navbar-brand d-none d-lg-block" href="dashboard.php">
-                    <span>Taman Kopses Ciseeng</span>
+                    <span>Tirta Sanita Outbound</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -356,13 +118,17 @@ $recent_reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="container-fluid">
             <div class="row mb-4">
                 <div class="col-12">
-                    <h1 class="mb-4">Dashboard</h1>
-                    <?php displayFlashMessage(); ?>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h1 class="mb-0">Dashboard Admin</h1>
+                        <small class="text-muted">Sistem Manajemen Tirta Sanita</small>
+                    </div>
                 </div>
             </div>
+            <?php displayFlashMessage(); ?>
 
+            <!-- Statistics Section -->
             <div class="row mb-4">
-                <div class="col-md-3 mb-4 mb-md-0">
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
                     <div class="stat-card">
                         <div class="icon bg-info">
                             <i class="fas fa-users"></i>
@@ -373,7 +139,7 @@ $recent_reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 mb-4 mb-md-0">
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
                     <div class="stat-card">
                         <div class="icon bg-success">
                             <i class="fas fa-box"></i>
@@ -384,7 +150,7 @@ $recent_reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 mb-4 mb-md-0">
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
                     <div class="stat-card">
                         <div class="icon bg-warning">
                             <i class="fas fa-calendar-check"></i>
@@ -395,7 +161,7 @@ $recent_reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-lg-3 col-md-6">
                     <div class="stat-card">
                         <div class="icon bg-danger">
                             <i class="fas fa-clock"></i>
@@ -407,19 +173,25 @@ $recent_reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
             </div>
+            <!-- Statistics Section End -->
 
+            <!-- Recent Reservations Section -->
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">Reservasi Terbaru</h5>
-                            <a href="reservations.php" class="btn btn-sm btn-primary">Lihat Semua</a>
+                            <h5 class="mb-0">
+                                <i class="fas fa-list me-2"></i> Reservasi Terbaru
+                            </h5>
+                            <a href="reservations.php" class="btn btn-sm btn-primary">
+                                <i class="fas fa-arrow-right me-1"></i> Lihat Semua
+                            </a>
                         </div>
                         <div class="card-body">
                             <?php if (empty($recent_reservations)): ?>
-                                <div class="text-center py-3">
-                                    <i class="fas fa-calendar-times fa-3x text-muted mb-3"></i>
-                                    <p class="mb-0">Belum ada reservasi</p>
+                                <div class="text-center py-5">
+                                    <i class="fas fa-inbox fa-4x text-muted mb-3" style="opacity: 0.3;"></i>
+                                    <p class="text-muted mb-0">Belum ada reservasi</p>
                                 </div>
                             <?php else: ?>
                                 <div class="table-responsive">
@@ -438,14 +210,14 @@ $recent_reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                         <tbody>
                                             <?php foreach ($recent_reservations as $reservation): ?>
                                                 <tr>
-                                                    <td>#<?php echo $reservation['id']; ?></td>
+                                                    <td><strong>#<?php echo $reservation['id']; ?></strong></td>
                                                     <td>
-                                                        <?php echo $reservation['user_name']; ?><br>
+                                                        <strong><?php echo $reservation['user_name']; ?></strong><br>
                                                         <small class="text-muted"><?php echo $reservation['whatsapp']; ?></small>
                                                     </td>
                                                     <td><?php echo $reservation['package_name']; ?></td>
                                                     <td><?php echo date('d M Y', strtotime($reservation['visit_date'])); ?></td>
-                                                    <td><?php echo formatCurrency($reservation['total_price']); ?></td>
+                                                    <td><strong><?php echo formatCurrency($reservation['total_price']); ?></strong></td>
                                                     <td>
                                                         <?php 
                                                         $status_class = '';
@@ -474,7 +246,9 @@ $recent_reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                         <span class="<?php echo $status_class; ?>"><?php echo $status_text; ?></span>
                                                     </td>
                                                     <td>
-                                                        <a href="reservation-detail.php?id=<?php echo $reservation['id']; ?>" class="btn btn-sm btn-primary">Detail</a>
+                                                        <a href="reservation-detail.php?id=<?php echo $reservation['id']; ?>" class="btn btn-sm btn-outline-primary">
+                                                            <i class="fas fa-eye"></i>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>
@@ -486,6 +260,7 @@ $recent_reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
             </div>
+            <!-- Recent Reservations Section End -->
         </div>
         <!-- Content End -->
     </div>

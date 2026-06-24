@@ -168,7 +168,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($stmt->execute()) {
                     $reservation_id = $db->lastInsertId();
                     setFlashMessage('message', 'Reservasi berhasil dibuat! Silakan lakukan pembayaran.', 'alert alert-success');
-                    redirect("payment.php?id=" . $reservation_id);
+                    redirect("checkout.php?id=" . $reservation_id);
                 } else {
                     setFlashMessage('message', 'Terjadi kesalahan saat membuat reservasi. Silakan coba lagi.', 'alert alert-danger');
                 }
@@ -185,10 +185,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
     <meta charset="utf-8" />
-    <title>Reservasi - Taman Kopses Ciseeng</title>
+    <title>Reservasi - Tirta Sanita Outbound</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="Taman Kopses Ciseeng, Reservasi, Booking" name="keywords" />
-    <meta content="Reservasi kunjungan ke Taman Kopses Ciseeng" name="description" />
+    <meta content="Tirta Sanita Outbound, Reservasi, Booking" name="keywords" />
+    <meta content="Reservasi kunjungan ke Tirta Sanita Outbound" name="description" />
 
     <!-- Favicon -->
     <link href="../img/favicon.ico" rel="icon" />
@@ -251,7 +251,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <p class="fs-5 fw-bold text-primary">Reservasi Kunjungan</p>
                     <h1 class="display-5 mb-4"><?php echo $page_title; ?></h1>
-                    <p class="mb-4">Silakan isi form berikut untuk melakukan reservasi kunjungan ke Taman Kopses Ciseeng. Pilih paket yang sesuai dengan kebutuhan Anda.</p>
+                    <p class="mb-4">Silakan isi form berikut untuk melakukan reservasi kunjungan ke Tirta Sanita Outbound. Pilih paket yang sesuai dengan kebutuhan Anda.</p>
                     
                     <div class="bg-primary-light p-4 mb-4 round">
                         <h4 class="text-primary mb-3"><i class="fas fa-info-circle me-2"></i>Informasi Penting</h4>

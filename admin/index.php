@@ -2,9 +2,13 @@
 require_once '../config/database.php';
 require_once '../includes/functions.php';
 
-// Check if user is already logged in as admin
-if (isLoggedIn() && isAdmin()) {
-    redirect("dashboard.php");
+// Check if user is already logged in as admin or cashier
+if (isLoggedIn() && (isAdmin() || isCashier())) {
+    if (isCashier()) {
+        redirect("cashier-dashboard.php");
+    } else {
+        redirect("dashboard.php");
+    }
 }
 
 // Initialize variables
@@ -34,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $database = new Database();
         $db = $database->getConnection();
         
-        $sql = "SELECT id, name, whatsapp, password, role FROM users WHERE whatsapp = :whatsapp AND role = 'admin'";
+        $sql = "SELECT id, name, whatsapp, password, role FROM users WHERE whatsapp = :whatsapp AND (role = 'admin' OR role = 'cashier')";
         
         if ($stmt = $db->prepare($sql)) {
             // Bind variables to the prepared statement as parameters
@@ -54,26 +58,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $hashed_password = $row["password"];
                         $role = $row["role"];
                         
-                        if (password_verify($password, $hashed_password)) {
-                            // Password is correct, start a new session
-                            session_start();
-                            
-                            // Store data in session variables
+                        if ($password === $hashed_password) {
+                            // Password is correct, store session variables
+                            // Session is already started in functions.php
                             $_SESSION["user_id"] = $id;
                             $_SESSION["user_name"] = $name;
                             $_SESSION["user_whatsapp"] = $whatsapp;
                             $_SESSION["user_role"] = $role;
                             
-                            // Redirect user to admin dashboard
-                            redirect("dashboard.php");
+                            // Redirect based on role
+                            if ($role === 'cashier') {
+                                redirect("cashier-dashboard.php");
+                            } else {
+                                redirect("dashboard.php");
+                            }
                         } else {
                             // Password is not valid
                             $login_err = "Password yang Anda masukkan salah.";
                         }
                     }
                 } else {
-                    // WhatsApp number doesn't exist or not an admin
-                    $login_err = "Akun tidak ditemukan atau bukan akun admin.";
+                    // WhatsApp number doesn't exist or not staff
+                    $login_err = "Akun tidak ditemukan atau tidak memiliki akses admin.";
                 }
             } else {
                 echo "Oops! Terjadi kesalahan. Silakan coba lagi nanti.";
@@ -94,10 +100,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
     <meta charset="utf-8">
-    <title>Admin Login - Taman Kopses Ciseeng</title>
+    <title>Admin Login - Tirta Sanita Outbound</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Taman Kopses Ciseeng, Admin, Login" name="keywords">
-    <meta content="Admin panel untuk mengelola website Taman Kopses Ciseeng" name="description">
+    <meta content="Tirta Sanita Outbound, Admin, Login" name="keywords">
+    <meta content="Admin panel untuk mengelola website Tirta Sanita Outbound" name="description">
 
     <!-- Favicon -->
     <link href="../img/favicon.ico" rel="icon">
@@ -209,7 +215,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <i class="fas fa-user-shield"></i>
                 </div>
                 <h2>Admin Login</h2>
-                <p class="mb-0">Taman Kopses Ciseeng</p>
+                <p class="mb-0">Tirta Sanita Outbound</p>
             </div>
             <div class="login-body">
                 <?php 
