@@ -1,0 +1,13 @@
+# Upload user
+uploads/*
+
+# Database dump
+*.sql
+
+# Editor
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store
