@@ -10,8 +10,8 @@
 
 ### **Merchant Details**
 - **Merchant ID:** M465598278
-- **Server Key:** Mid-server-trMqZDeb4F7yguxUTQ5IgbSW
-- **Client Key:** Mid-client-2ifCLwnq_OAHXHP-
+- **Server Key:** [STORED IN CONFIG - NOT IN REPO]
+- **Client Key:** [STORED IN CONFIG - NOT IN REPO]
 - **Status:** ✅ Configured
 
 ### **Configuration File**
@@ -19,19 +19,23 @@
 - **Status:** ✅ Updated with your credentials
 - **Environment:** Sandbox (Testing) - Set `$isProduction = false`
 
+⚠️ **IMPORTANT:** Credentials are stored in `config/midtrans.php` locally but NOT committed to GitHub for security!
+
 ---
 
 ## ✅ What's Configured
 
 ### **1. Server Key** ✅
 ```php
-Server Key: Mid-server-trMqZDeb4F7yguxUTQ5IgbSW
+// Server Key stored in config/midtrans.php
+// NOT displayed here for security reasons
 Purpose: Backend transaction processing & verification
 ```
 
 ### **2. Client Key** ✅
 ```php
-Client Key: Mid-client-2ifCLwnq_OAHXHP-
+// Client Key stored in config/midtrans.php
+// NOT displayed here for security reasons
 Purpose: Frontend Snap payment widget
 ```
 
@@ -314,11 +318,13 @@ $isProduction = true;
 | Item | Value |
 |------|-------|
 | **Merchant ID** | M465598278 |
-| **Server Key** | Mid-server-trMqZDeb4F7yguxUTQ5IgbSW |
-| **Client Key** | Mid-client-2ifCLwnq_OAHXHP- |
+| **Server Key** | ✅ Configured (in config/midtrans.php) |
+| **Client Key** | ✅ Configured (in config/midtrans.php) |
 | **Mode** | Sandbox (Testing) |
 | **Config File** | config/midtrans.php |
 | **Status** | ✅ Ready |
+
+⚠️ **Security Note:** Actual keys are stored locally in `config/midtrans.php` and NOT committed to GitHub
 
 ---
 

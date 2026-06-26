@@ -4,6 +4,15 @@ uploads/*
 # Database dump
 *.sql
 
+# Environment files (SENSITIVE - NEVER COMMIT)
+.env
+.env.local
+.env.production
+.env.*.local
+
+# Configuration with credentials (SENSITIVE - NEVER COMMIT)
+config/midtrans.php
+
 # Editor
 .vscode/
 .idea/
@@ -11,3 +20,14 @@ uploads/*
 # OS
 Thumbs.db
 .DS_Store
+
+# Vendor (optional - uncomment if not committing vendor/)
+# vendor/
+
+# Logs
+*.log
+
+# IDE
+*.swp
+*.swo
+*~

@@ -18,11 +18,13 @@ require_once dirname(__FILE__) . '/../vendor/autoload.php';
 // KONFIGURASI MIDTRANS
 // ========================================
 
-// Midtrans credentials (Merchant ID: M465598278)
-$serverKey = getenv('MIDTRANS_SERVER_KEY') ?: 'Mid-server-trMqZDeb4F7yguxUTQ5IgbSW';
+// Midtrans credentials
+// ⚠️ IMPORTANT: Add your actual credentials here
+// Get from Midtrans Dashboard: Settings > Access Keys
+$serverKey = getenv('MIDTRANS_SERVER_KEY') ?: 'YOUR_SERVER_KEY_HERE';
 
 // Client Key untuk frontend payment page
-$clientKey = getenv('MIDTRANS_CLIENT_KEY') ?: 'Mid-client-2ifCLwnq_OAHXHP-';
+$clientKey = getenv('MIDTRANS_CLIENT_KEY') ?: 'YOUR_CLIENT_KEY_HERE';
 
 // Environment: false untuk sandbox/testing, true untuk production
 $isProduction = getenv('MIDTRANS_IS_PRODUCTION') ?: false;
