@@ -109,11 +109,13 @@ cp .env.local.example .env.local
 ### **Step 2: Edit .env.local**
 
 ```
-MIDTRANS_SERVER_KEY=your-actual-server-key
-MIDTRANS_CLIENT_KEY=your-actual-client-key
+MIDTRANS_SERVER_KEY=your-server-key-from-dashboard
+MIDTRANS_CLIENT_KEY=your-client-key-from-dashboard
+DB_USER=root
+DB_PASS=
 ```
 
-⚠️ **NEVER show actual keys in documentation!**
+Get your keys from Midtrans Dashboard > Settings > Access Keys
 
 ### **Step 3: Load in PHP (if using)**
 

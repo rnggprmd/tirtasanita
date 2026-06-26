@@ -98,9 +98,10 @@ Test the payment flow:
 ### **File: `config/midtrans.php`**
 
 ```php
-// Your credentials are already set
-\Midtrans\Config::$serverKey = 'Mid-server-trMqZDeb4F7yguxUTQ5IgbSW';
-\Midtrans\Config::$clientKey = 'Mid-client-2ifCLwnq_OAHXHP-';
+// Credentials configured via environment variables
+// DO NOT add actual keys here - use .env.local instead
+\Midtrans\Config::$serverKey = getenv('MIDTRANS_SERVER_KEY');
+\Midtrans\Config::$clientKey = getenv('MIDTRANS_CLIENT_KEY');
 \Midtrans\Config::$isProduction = false;  // Sandbox mode
 
 // Security settings
@@ -206,17 +207,19 @@ $isProduction = true;
 ### **For Production:**
 
 1. **Move credentials to .env file** (don't hardcode)
-   ```php
-   // In .env
-   MIDTRANS_SERVER_KEY=Mid-server-trMqZDeb4F7yguxUTQ5IgbSW
-   MIDTRANS_CLIENT_KEY=Mid-client-2ifCLwnq_OAHXHP-
+   ```
+   # In .env.local
+   MIDTRANS_SERVER_KEY=your-server-key-from-dashboard
+   MIDTRANS_CLIENT_KEY=your-client-key-from-dashboard
    ```
 
 2. **Don't commit credentials to Git**
    ```
    # In .gitignore
    .env
+   .env.local
    config/midtrans.php
+   ```
    ```
 
 3. **Use HTTPS only in production**
