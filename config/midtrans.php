@@ -21,6 +21,7 @@ require_once dirname(__FILE__) . '/../vendor/autoload.php';
 // Midtrans credentials
 // ⚠️ IMPORTANT: Add your actual credentials here
 // Get from Midtrans Dashboard: Settings > Access Keys
+// Use .env.local or environment variables instead
 $serverKey = getenv('MIDTRANS_SERVER_KEY') ?: 'YOUR_SERVER_KEY_HERE';
 
 // Client Key untuk frontend payment page

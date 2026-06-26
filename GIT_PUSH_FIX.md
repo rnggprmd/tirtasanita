@@ -109,9 +109,11 @@ cp .env.local.example .env.local
 ### **Step 2: Edit .env.local**
 
 ```
-MIDTRANS_SERVER_KEY=Mid-server-trMqZDeb4F7yguxUTQ5IgbSW
-MIDTRANS_CLIENT_KEY=Mid-client-2ifCLwnq_OAHXHP-
+MIDTRANS_SERVER_KEY=your-actual-server-key
+MIDTRANS_CLIENT_KEY=your-actual-client-key
 ```
+
+⚠️ **NEVER show actual keys in documentation!**
 
 ### **Step 3: Load in PHP (if using)**
 
