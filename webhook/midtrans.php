@@ -5,7 +5,7 @@
  * 
  * Setup di Midtrans Dashboard:
  * Settings > Webhooks > Tambahkan URL ini:
- * https://yourdomain.com/tintasanita/webhook/midtrans.php
+ * https://yourdomain.com/tirtasanita/webhook/midtrans.php
  */
 
 require_once '../config/database.php';
