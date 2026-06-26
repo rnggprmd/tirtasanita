@@ -175,7 +175,7 @@ composer install
 # 5. Access
 # Homepage: http://localhost/tirtasanita
 # Admin: http://localhost/tirtasanita/admin
-# Default: 08990559840 / 72onevi
+# Default: 0812345678910 / admin123
 ```
 
 ---
@@ -185,8 +185,8 @@ composer install
 **Admin Login Page:** `http://localhost/tirtasanita/admin`
 
 ```
-WhatsApp:  08990559840
-Password:  72onevi
+WhatsApp:  0812345678910
+Password:  admin123
 Role:      Admin (Full Access)
 ```
 

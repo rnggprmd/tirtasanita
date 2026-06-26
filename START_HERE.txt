@@ -72,8 +72,8 @@ Silakan baca dokumentasi berikut dalam urutan ini:
 4. Akses http://localhost/tirtasanita
 
 Default Login:
-  Username: 08990559840
-  Password: 72onevi
+  Username: 0812345678910
+  Password: admin123
 
 ⚠️ UBAH PASSWORD INI SETELAH LOGIN PERTAMA!
 

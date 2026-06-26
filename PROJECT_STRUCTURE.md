@@ -148,7 +148,7 @@ tirtasanita/
 - created_at
 - updated_at
 ```
-**Default Admin:** 08990559840 / 72onevi
+**Default Admin:** 0812345678910 / admin123
 
 ### **2. packages**
 ```sql

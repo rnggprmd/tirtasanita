@@ -57,11 +57,11 @@ composer install
 **Admin Panel:** http://localhost/tirtasanita/admin
 
 ```
-WhatsApp: 08990559840
-Password: 72onevi
+WhatsApp: 0812345678910
+Password: admin123
 ```
 
-⚠️ **Ubah password ini setelah login pertama kali!**
+⚠️ **Ingat: Ubah password ini setelah login pertama kali!**
 
 ---
 
@@ -123,8 +123,8 @@ MIDTRANS_IS_PRODUCTION=false
 
 ### 1️⃣ **Login as Admin**
 - URL: http://localhost/tirtasanita/admin
-- Username: 08990559840
-- Password: 72onevi
+- Username: 0812345678910
+- Password: admin123
 
 ### 2️⃣ **Change Default Password**
 - Click Profile / Settings
@@ -312,7 +312,7 @@ smtp_port = 587
 
 1. **Change Default Admin Password**
    ```bash
-   # Login: 08990559840 / 72onevi
+   # Login: 0812345678910 / admin123
    # Go to admin/profile.php
    # Change password immediately
    ```
