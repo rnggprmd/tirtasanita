@@ -5,14 +5,37 @@ Dokumentasi lengkap untuk menginstal dan menjalankan project **Tirta Sanita Outb
 ---
 
 ## 📑 Daftar Isi
-1. [Prasyarat Sistem](#prasyarat-sistem)
-2. [Instalasi dengan Laragon](#instalasi-dengan-laragon)
-3. [Instalasi dengan XAMPP](#instalasi-dengan-xampp)
-4. [Setup Manual](#setup-manual)
-5. [Clone dari GitHub](#clone-dari-github)
-6. [Konfigurasi Database](#konfigurasi-database)
-7. [Menjalankan Project](#menjalankan-project)
-8. [Troubleshooting](#troubleshooting)
+1. [Ringkasan Project](#ringkasan-project)
+2. [Prasyarat Sistem](#prasyarat-sistem)
+3. [Instalasi dengan Laragon](#instalasi-dengan-laragon)
+4. [Instalasi dengan XAMPP](#instalasi-dengan-xampp)
+5. [Setup Manual](#setup-manual)
+6. [Clone dari GitHub](#clone-dari-github)
+7. [Konfigurasi Lanjutan](#konfigurasi-lanjutan)
+8. [Menjalankan Project](#menjalankan-project)
+9. [Akses Default](#akses-default)
+10. [Troubleshooting](#troubleshooting)
+11. [Catatan Penting](#catatan-penting)
+
+---
+
+## 📌 Ringkasan Project
+
+**Tirta Sanita Outbound** adalah sistem manajemen reservasi dan penjualan tiket untuk tempat wisata outbound. Sistem ini mencakup:
+
+- 🌐 Website publik dengan katalog paket wisata
+- 📊 Dashboard admin untuk manajemen data
+- 💳 Panel kasir untuk penjualan tiket instant
+- 💰 Integrasi payment gateway (Midtrans)
+- 📱 Notifikasi via WhatsApp
+- 📧 Konfirmasi pembayaran via email
+
+### **Tech Stack:**
+- **Backend:** PHP 7.4+ (Procedural)
+- **Database:** MySQL 5.7+ / MariaDB
+- **Frontend:** Bootstrap 5, jQuery
+- **Payment Gateway:** Midtrans
+- **Server:** Apache
 
 ---
 
@@ -24,7 +47,13 @@ Sebelum memulai, pastikan sistem Anda memiliki:
 - **PHP** 7.4 atau lebih tinggi
 - **MySQL** 5.7 atau lebih tinggi (atau MariaDB)
 - **Composer** (untuk package management)
-- **Git** (untuk clone dari GitHub)
+- **Git** (opsional, untuk clone dari GitHub)
+
+### **Ekstensi PHP yang Diperlukan:**
+- PDO
+- PDO_MySQL
+- cURL (untuk Midtrans API)
+- OpenSSL
 
 ### **Browser yang Disupport:**
 - Google Chrome (versi terbaru)
@@ -33,63 +62,100 @@ Sebelum memulai, pastikan sistem Anda memiliki:
 - Safari (versi terbaru)
 
 ### **Ruang Disk:**
-- Minimal 500 MB untuk instalasi
+- Minimal 500 MB untuk instalasi lengkap
 
 ---
 
 ## 🚀 Instalasi dengan Laragon
 
-**Laragon** adalah local development environment yang mudah dan cepat untuk Windows.
+**Laragon** adalah local development environment terbaik untuk Windows yang sudah include semua tools yang diperlukan.
 
 ### **Langkah 1: Download & Install Laragon**
 
-1. Kunjungi website [Laragon](https://laragon.org/)
-2. Download versi **Full** (sudah include Apache, MySQL, PHP, Composer)
-3. Jalankan installer dan ikuti proses instalasi standar
-4. Pilih lokasi instalasi (default: `C:\laragon`)
-5. Tunggu hingga instalasi selesai
+1. **Kunjungi website Laragon:** https://laragon.org/
+2. **Download versi Full** (sudah include Apache, MySQL, PHP, Composer)
+   - File: `laragon-wamp-5.x.x-full.exe` (~250MB)
+3. **Jalankan installer:**
+   - Double-click file installer
+   - Klik "Next" untuk melanjutkan
+   - Accept license agreement
+4. **Pilih lokasi instalasi:**
+   - Default: `C:\laragon` (RECOMMENDED)
+   - Klik "Next"
+5. **Pilih komponen:**
+   - Pastikan semua komponen tercentang
+6. **Tunggu instalasi selesai** (~5-10 menit)
+7. **Finish dan buka Laragon**
 
 ### **Langkah 2: Clone atau Copy Project ke Folder www**
 
-#### **Opsi A: Clone dari GitHub**
-```bash
-cd C:\laragon\www
-git clone https://github.com/username/tirtasanita.git
-cd tirtasanita
-```
+#### **Opsi A: Clone dari GitHub** (Direkomendasikan)
+1. **Buka Laragon Terminal:**
+   - Di aplikasi Laragon, klik tombol "Terminal"
+2. **Navigasi ke folder www:**
+   ```bash
+   cd C:\laragon\www
+   ```
+3. **Clone repository:**
+   ```bash
+   git clone https://github.com/username/tirtasanita.git
+   cd tirtasanita
+   ```
+4. **Tunggu hingga clone selesai**
 
-#### **Opsi B: Copy Manual**
-1. Download project (ZIP) dari repository
-2. Extract ke folder `C:\laragon\www\tirtasanita`
-
-### **Langkah 3: Install Dependencies dengan Composer**
-
-1. Buka **Laragon Terminal** (klik tombol Terminal di Laragon)
-2. Navigasi ke folder project:
+#### **Opsi B: Download & Extract ZIP**
+1. **Download project sebagai ZIP** dari GitHub
+2. **Extract ke folder `C:\laragon\www\tirtasanita`**
+3. **Buka terminal dan navigasi:**
    ```bash
    cd C:\laragon\www\tirtasanita
    ```
-3. Jalankan composer:
+
+### **Langkah 3: Install Dependencies dengan Composer**
+
+1. **Di dalam folder tirtasanita, jalankan:**
    ```bash
    composer install
    ```
-4. Tunggu hingga semua dependencies selesai diinstal
+   Output yang diharapkan:
+   ```
+   Installing dependencies from lock file
+   - Installing midtrans/midtrans-php (v2.x.x)
+   ```
+
+2. **Tunggu hingga dependencies selesai** (~2-3 menit)
 
 ### **Langkah 4: Setup Database**
 
-1. **Buka Laragon Database Manager:**
-   - Klik tombol Database di Laragon (atau akses phpMyAdmin di `http://localhost/phpmyadmin`)
+#### **Metode A: Menggunakan phpMyAdmin GUI**
 
-2. **Buat Database Baru:**
+1. **Buka phpMyAdmin:**
+   - Di aplikasi Laragon, klik tombol "Database"
+   - Atau buka browser: http://localhost/phpmyadmin
+
+2. **Login dengan:**
    - Username: `root`
-   - Password: (kosong/tidak ada)
-   - Buat database dengan nama: `tirtasanita_db`
+   - Password: (kosong)
 
-3. **Import File SQL:**
-   - Pilih database `tirtasanita_db`
-   - Klik tab **Import**
-   - Pilih file: `database/tirtasanita_db.sql`
-   - Klik **GO**
+3. **Buat database baru:**
+   - Di sidebar kiri, klik "New"
+   - Nama database: `tirtasanita_db`
+   - Collation: `utf8mb4_general_ci`
+   - Klik "Create"
+
+4. **Import file SQL:**
+   - Pilih database `tirtasanita_db` (di sidebar kiri)
+   - Klik tab "Import"
+   - Klik "Choose File"
+   - Pilih: `database/tirtasanita_db.sql`
+   - Klik "Go"
+   - Tunggu hingga import selesai
+
+#### **Metode B: Menggunakan Command Line**
+
+```bash
+mysql -u root < database/tirtasanita_db.sql
+```
 
 ### **Langkah 5: Verifikasi Konfigurasi**
 
@@ -98,6 +164,10 @@ File `config/database.php` sudah ter-konfigurasi dengan benar:
 private $host = 'localhost';
 private $db_name = 'tirtasanita_db';
 private $username = 'root';
+private $password = '';
+```
+
+**Jika menggunakan setup yang berbeda**, edit file `config/database.php` sesuai konfigurasi Anda.
 private $password = '';
 ```
 
