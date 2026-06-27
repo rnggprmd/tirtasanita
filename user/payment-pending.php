@@ -17,7 +17,7 @@ $order_id = $_GET['order_id'] ?? null;
     <meta charset="utf-8" />
     <title>Pembayaran Pending - Tirta Sanita Outbound</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <link href="../img/favicon.ico" rel="icon" />
+    <link href="../img/logo.png" rel="icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Quicksand:wght@600;700&display=swap" rel="stylesheet" />

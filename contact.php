@@ -12,7 +12,7 @@ $pageTitle = "Kontak Kami - Tirta Sanita Outbound";
   <meta content="Informasi kontak Tirta Sanita Outbound. Hubungi kami untuk reservasi dan informasi lebih lanjut." name="description" />
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon" />
+    <link href="img/logo.png" rel="icon" />
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -2,8 +2,8 @@
 require_once '../config/database.php';
 require_once '../includes/functions.php';
 
-// Check if user is logged in as admin
-if (!isLoggedIn() || !isAdmin()) {
+// Check if user is logged in as admin or cashier
+if (!isLoggedIn() || !isStaff()) {
     setFlashMessage('message', 'Anda tidak memiliki akses ke halaman ini.', 'alert alert-danger');
     redirect("index.php");
 }
@@ -12,21 +12,23 @@ if (!isLoggedIn() || !isAdmin()) {
 $database = new Database();
 $db = $database->getConnection();
 
-// Get admin data from session
-$admin_id = $_SESSION['user_id'];
+// Get user data from session
+$user_id = $_SESSION['user_id'];
+$user_role = $_SESSION['user_role'];
 
-// Get admin details
-$sql = "SELECT * FROM users WHERE id = :id AND role = 'admin'";
+// Get user details
+$sql = "SELECT * FROM users WHERE id = :id AND (role = 'admin' OR role = 'cashier')";
 $stmt = $db->prepare($sql);
-$stmt->bindParam(':id', $admin_id);
+$stmt->bindParam(':id', $user_id);
 $stmt->execute();
 
 if ($stmt->rowCount() == 0) {
-    setFlashMessage('message', 'Data admin tidak ditemukan.', 'alert alert-danger');
-    redirect("dashboard.php");
+    setFlashMessage('message', 'Data tidak ditemukan.', 'alert alert-danger');
+    $redirect_page = ($user_role === 'cashier') ? 'cashier-dashboard.php' : 'dashboard.php';
+    redirect($redirect_page);
 }
 
-$admin = $stmt->fetch(PDO::FETCH_ASSOC);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // Handle form submission
 $success_message = '';
@@ -50,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $check_sql = "SELECT id FROM users WHERE whatsapp = :whatsapp AND id != :id";
         $check_stmt = $db->prepare($check_sql);
         $check_stmt->bindParam(':whatsapp', $whatsapp);
-        $check_stmt->bindParam(':id', $admin_id);
+        $check_stmt->bindParam(':id', $user_id);
         $check_stmt->execute();
         
         if ($check_stmt->rowCount() > 0) {
@@ -60,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $check_sql = "SELECT id FROM users WHERE email = :email AND id != :id";
             $check_stmt = $db->prepare($check_sql);
             $check_stmt->bindParam(':email', $email);
-            $check_stmt->bindParam(':id', $admin_id);
+            $check_stmt->bindParam(':id', $user_id);
             $check_stmt->execute();
             
             if ($check_stmt->rowCount() > 0) {
@@ -73,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // If user wants to change password
             if (!empty($current_password) && !empty($new_password)) {
                 // Verify current password
-                if (!password_verify($current_password, $admin['password'])) {
+                if (!password_verify($current_password, $user['password'])) {
                     $error_message = 'Password saat ini tidak sesuai.';
                 } elseif ($new_password != $confirm_password) {
                     $error_message = 'Password baru dan konfirmasi password tidak sama.';
@@ -90,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $update_stmt->bindParam(':email', $email);
                     $update_stmt->bindParam(':whatsapp', $whatsapp);
                     $update_stmt->bindParam(':password', $hashed_password);
-                    $update_stmt->bindParam(':id', $admin_id);
+                    $update_stmt->bindParam(':id', $user_id);
                     
                     if ($update_stmt->execute()) {
                         // Update session data
@@ -112,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $update_stmt->bindParam(':name', $name);
                 $update_stmt->bindParam(':email', $email);
                 $update_stmt->bindParam(':whatsapp', $whatsapp);
-                $update_stmt->bindParam(':id', $admin_id);
+                $update_stmt->bindParam(':id', $user_id);
                 
                 if ($update_stmt->execute()) {
                     // Update session data
@@ -135,13 +137,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html lang="id">
 <head>
     <meta charset="utf-8">
-    <title>Profil Admin - Tirta Sanita Outbound</title>
+    <title>Profil - Tirta Sanita Outbound</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Tirta Sanita Outbound, Admin, Profil" name="keywords">
-    <meta content="Admin panel untuk mengelola profil admin di Tirta Sanita Outbound" name="description">
+    <meta content="Halaman profil untuk mengelola data pribadi" name="description">
 
     <!-- Favicon -->
-    <link href="../img/favicon.ico" rel="icon">
+    <link href="../img/logo.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -185,7 +187,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="profile.php"><i class="fas fa-user me-2"></i> Profil</a></li>
+                                <?php if (isAdmin()): ?>
                                 <li><a class="dropdown-item" href="settings.php"><i class="fas fa-cog me-2"></i> Pengaturan</a></li>
+                                <?php endif; ?>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
                             </ul>
@@ -199,7 +203,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="container-fluid">
             <div class="row mb-4">
                 <div class="col-12 d-flex justify-content-between align-items-center">
-                    <h1 class="mb-0">Profil Admin</h1>
+                    <h1 class="mb-0">Profil Saya</h1>
                 </div>
             </div>
 
@@ -211,9 +215,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <i class="fas fa-user"></i>
                         </div>
                         <div class="text-center text-md-start">
-                            <h2 class="mb-1"><?php echo htmlspecialchars($admin['name']); ?></h2>
-                            <p class="mb-0"><i class="fas fa-user-shield me-2"></i>Administrator</p>
-                            <p class="mb-0"><i class="fas fa-calendar-check me-2"></i>Bergabung: <?php echo date('d M Y', strtotime($admin['created_at'])); ?></p>
+                            <h2 class="mb-1"><?php echo htmlspecialchars($user['name']); ?></h2>
+                            <p class="mb-0">
+                                <i class="fas fa-<?php echo ($user_role === 'admin') ? 'user-shield' : 'cash-register'; ?> me-2"></i>
+                                <?php echo ($user_role === 'admin') ? 'Administrator' : 'Kasir'; ?>
+                            </p>
+                            <p class="mb-0"><i class="fas fa-calendar-check me-2"></i>Bergabung: <?php echo date('d M Y', strtotime($user['created_at'])); ?></p>
                         </div>
                     </div>
                 </div>
@@ -246,7 +253,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <label for="name" class="form-label">Nama Lengkap</label>
                                     <div class="input-group">
                                         <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                        <input type="text" class="form-control" id="name" name="name" value="<?php echo htmlspecialchars($admin['name']); ?>" required>
+                                        <input type="text" class="form-control" id="name" name="name" value="<?php echo htmlspecialchars($user['name']); ?>" required>
                                     </div>
                                 </div>
                                 
@@ -254,7 +261,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <label for="email" class="form-label">Email</label>
                                     <div class="input-group">
                                         <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                                        <input type="email" class="form-control" id="email" name="email" value="<?php echo htmlspecialchars($admin['email']); ?>">
+                                        <input type="email" class="form-control" id="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>">
                                     </div>
                                     <small class="text-muted">Opsional, namun direkomendasikan untuk pemulihan akun</small>
                                 </div>
@@ -263,7 +270,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <label for="whatsapp" class="form-label">Nomor WhatsApp</label>
                                     <div class="input-group">
                                         <span class="input-group-text"><i class="fab fa-whatsapp"></i></span>
-                                        <input type="text" class="form-control" id="whatsapp" name="whatsapp" value="<?php echo htmlspecialchars($admin['whatsapp']); ?>" required>
+                                        <input type="text" class="form-control" id="whatsapp" name="whatsapp" value="<?php echo htmlspecialchars($user['whatsapp']); ?>" required>
                                     </div>
                                     <small class="text-muted">Format: 08xxxxxxxxxx atau +628xxxxxxxxxx</small>
                                 </div>
@@ -331,8 +338,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <h6><i class="fas fa-key me-2 text-primary"></i>Password</h6>
                                 <p class="mb-0">Terakhir diubah: 
                                     <?php 
-                                    echo !empty($admin['updated_at']) && $admin['updated_at'] != $admin['created_at'] 
-                                        ? date('d M Y', strtotime($admin['updated_at'])) 
+                                    echo !empty($user['updated_at']) && $user['updated_at'] != $user['created_at'] 
+                                        ? date('d M Y', strtotime($user['updated_at'])) 
                                         : 'Belum pernah diubah'; 
                                     ?>
                                 </p>

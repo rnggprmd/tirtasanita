@@ -46,9 +46,15 @@ function generateSidebar($current_page) {
     // Start building HTML
     $html = '<!-- Sidebar Start -->' . "\n";
     $html .= '<div class="sidebar">' . "\n";
-    $html .= '    <div class="sidebar-header">' . "\n";
-    $html .= '        <h3 class="mb-0">Admin Panel</h3>' . "\n";
-    $html .= '        <p class="mb-0 small">' . $role_text . '</p>' . "\n";
+    $dashboard_link = $is_cashier ? 'cashier-dashboard.php' : 'dashboard.php';
+    $html .= '    <div class="sidebar-header text-center">' . "\n";
+    $html .= '        <a href="' . $dashboard_link . '" class="d-block text-white text-decoration-none">' . "\n";
+    $html .= '            <div class="d-inline-block bg-white rounded-circle p-2 mb-2 shadow-sm" style="width: 85px; height: 85px; display: inline-flex; align-items: center; justify-content: center;">' . "\n";
+    $html .= '                <img src="../img/logo.png" alt="Tirta Sanita Logo" style="max-width: 100%; max-height: 100%; object-fit: contain;">' . "\n";
+    $html .= '            </div>' . "\n";
+    $html .= '            <h3 class="mb-0 fs-5 fw-bold text-white" style="color: #ffffff !important;">Admin Panel</h3>' . "\n";
+    $html .= '        </a>' . "\n";
+    $html .= '        <p class="mb-0 small text-white-50" style="color: rgba(255, 255, 255, 0.85) !important;">' . $role_text . '</p>' . "\n";
     $html .= '    </div>' . "\n";
     $html .= '    <div class="sidebar-menu">' . "\n";
     $html .= '        <ul class="nav flex-column">' . "\n";
@@ -168,6 +174,8 @@ function generateSidebar($current_page) {
     $html .= '    </div>' . "\n";
     $html .= '</div>' . "\n";
     $html .= '<!-- Sidebar End -->' . "\n";
+    $html .= '<div class="sidebar-overlay"></div>' . "\n";
+    $html .= '<script src="sidebar.js"></script>' . "\n";
 
     return $html;
 }

@@ -136,7 +136,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'remove' && isset($_GET['facili
     <meta content="Admin panel untuk mengelola fasilitas paket di Tirta Sanita Outbound" name="description">
 
     <!-- Favicon -->
-    <link href="../img/favicon.ico" rel="icon">
+    <link href="../img/logo.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

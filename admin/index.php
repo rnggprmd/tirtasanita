@@ -106,7 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta content="Admin panel untuk mengelola website Tirta Sanita Outbound" name="description">
 
     <!-- Favicon -->
-    <link href="../img/favicon.ico" rel="icon">
+    <link href="../img/logo.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -212,7 +212,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="login-card">
             <div class="login-header">
                 <div class="login-logo">
-                    <i class="fas fa-user-shield"></i>
+                    <img src="../img/logo.png" alt="Tirta Sanita Logo" style="width: 60px; height: 60px; object-fit: contain;">
                 </div>
                 <h2>Admin Login</h2>
                 <p class="mb-0">Tirta Sanita Outbound</p>
